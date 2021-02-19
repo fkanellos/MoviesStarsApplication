@@ -8,13 +8,13 @@ public class MovieModel {
     private String title;
     private int year;
     private String genre;
-    private int duration;
+    private String duration;
 //    private String cast;
 //    private String director;
 //    private String summary;
 //    private Boolean favorite;
 
-    public MovieModel(String title, int year, String genre, int duration) {
+    public MovieModel(String title, int year, String genre, String duration) {
         this.title = title;
         this.year = year;
         this.genre = genre;
@@ -45,11 +45,11 @@ public class MovieModel {
         this.genre = genre;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 

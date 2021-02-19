@@ -5,35 +5,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.AsyncDifferConfig;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class SearchResultsAdapter extends RecyclerView.Adapter <SearchResultsViewHolder> {
+public class SearchResultsAdapter extends ListAdapter<MovieModel, SearchResultsViewHolder> {
 
-    private List<MovieModel> movieList;
-
-    public SearchResultsAdapter(List<MovieModel> movieList) {
-        this.movieList = movieList;
+    public SearchResultsAdapter() {
+        super(new DiffUtilsItems());
     }
+
 
     @NonNull
     @Override
     public SearchResultsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_front, parent, false);
         return new SearchResultsViewHolder(view);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull SearchResultsViewHolder holder, int position) {
-        MovieModel movieModel = movieList.get(position);
+
+        MovieModel movieModel = getItem(position);
         holder.bind(movieModel);
     }
-
-    @Override
-    public int getItemCount() {
-        return movieList.size();
-    }
-
-
 }
