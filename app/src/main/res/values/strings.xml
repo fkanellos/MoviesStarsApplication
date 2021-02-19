@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MovieStarsApp</string>
+    <string name="title">Title:</string>
+    <string name="year">Year:</string>
+    <string name="genre">Genre:</string>
+    <string name="duration">Duration:</string>
+    <string name="cast">Cast:</string>
+    <string name="director">Director:</string>
+    <string name="Summary">Summary:</string>
 </resources>
