@@ -20,13 +20,13 @@ public class SearchResultsViewHolder extends RecyclerView.ViewHolder {
         title.setText("\"" + movieModel.getTitle() + "\"");
 
         TextView year = itemView.findViewById(R.id.year);
-        year.setText(String.valueOf(movieModel.getYear()));
+        year.setText("(" + String.valueOf(movieModel.getYear())+ ")");
 
-        TextView genre = itemView.findViewById(R.id.genre);
-        genre.setText(movieModel.getGenre());
+//        TextView genre = itemView.findViewById(R.id.genre);
+//        genre.setText(movieModel.getGenre());
 
-        TextView duration = itemView.findViewById(R.id.duration);
-        duration.setText(movieModel.getDuration());
+//        TextView duration = itemView.findViewById(R.id.duration);
+//        duration.setText(movieModel.getDuration());
 
     }
 }

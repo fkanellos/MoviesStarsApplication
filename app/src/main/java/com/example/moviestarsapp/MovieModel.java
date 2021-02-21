@@ -14,6 +14,11 @@ public class MovieModel {
 //    private String summary;
 //    private Boolean favorite;
 
+    public MovieModel(String title, int year) {
+        this.title = title;
+        this.year = year;
+    }
+
     public MovieModel(String title, int year, String genre, String duration) {
         this.title = title;
         this.year = year;

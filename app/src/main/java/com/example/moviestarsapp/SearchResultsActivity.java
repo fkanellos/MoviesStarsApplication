@@ -88,22 +88,36 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         List<MovieModel> movieList = new ArrayList<MovieModel>();
 
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Turtles Can Fly", 2007, "Drama", "2h" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Turtles Can Fly", 2007, "Drama", "2h" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Turtles Can Fly", 2007, "Drama", "2h" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Turtles Can Fly", 2007, "Drama", "2h" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Turtles Can Fly", 2007, "Drama", "2h" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
-        movieList.add(new MovieModel("Titanic", 2000, "Romantic", "3h 50m" ));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+        movieList.add(new MovieModel("Once Upon a Time in Holywood", 2000));
+        movieList.add(new MovieModel("Titanic", 2000));
+        movieList.add(new MovieModel("Turtles Can Fly", 2000));
+        movieList.add(new MovieModel("Joker", 2000));
+
+
+
+
+
+
 
         return movieList;
     }
