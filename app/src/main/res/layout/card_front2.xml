@@ -1,114 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="match_parent"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:padding="10dp"
         >
-
         <ImageView
             android:id="@+id/img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher"
-            app:layout_constraintBottom_toTopOf="@id/title_fix"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@id/title_fix"
+        />
 
         <TextView
             android:id="@+id/title_fix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toEndOf="@id/img"
+            app:layout_constraintTop_toTopOf="@id/img"
             android:text="@string/title_fix"
+            android:layout_marginStart="15dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/title"
-            app:layout_constraintTop_toBottomOf="@id/img"
-            app:layout_constraintHorizontal_chainStyle="packed"
             />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/title_fix"
-            app:layout_constraintTop_toTopOf="@id/title_fix"
-            tools:text="@string/title" />
+            app:layout_constraintTop_toTopOf="@id/img"
+            tools:text="@string/title"
+            android:layout_marginStart="5dp"
+            />
 
         <TextView
             android:id="@+id/year_fix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/title_fix"
+            app:layout_constraintTop_toBottomOf="@id/title_fix"
             android:text="@string/year_fix"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/year"
-            app:layout_constraintTop_toBottomOf="@id/title_fix"
-            app:layout_constraintHorizontal_chainStyle="packed"
             />
 
         <TextView
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/year_fix"
-            app:layout_constraintTop_toTopOf="@id/year_fix"
-            tools:text="@string/year" />
+            app:layout_constraintTop_toBottomOf="@id/title"
+            tools:text="@string/year"
+            android:layout_marginStart="5dp"
+            />
 
         <TextView
             android:id="@+id/genre_fix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/year_fix"
+            app:layout_constraintTop_toBottomOf="@id/year_fix"
             android:text="@string/genre_fix"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/genre"
-            app:layout_constraintTop_toBottomOf="@id/year_fix"
-            app:layout_constraintHorizontal_chainStyle="packed"
             />
 
         <TextView
             android:id="@+id/genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/genre_fix"
-            app:layout_constraintTop_toTopOf="@id/genre_fix"
-            tools:text="@string/genre" />
+            app:layout_constraintTop_toBottomOf="@id/year"
+            tools:text="@string/genre"
+            android:layout_marginStart="5dp"
+
+            />
 
         <TextView
             android:id="@+id/duration_fix"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/genre_fix"
+            app:layout_constraintTop_toBottomOf="@id/genre_fix"
             android:text="@string/duration_fix"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/duration"
-            app:layout_constraintTop_toBottomOf="@id/genre_fix"
-            app:layout_constraintHorizontal_chainStyle="packed"
             />
 
         <TextView
             android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/duration_fix"
-            app:layout_constraintTop_toTopOf="@id/duration_fix"
-            tools:text="@string/duration" />
+            app:layout_constraintTop_toBottomOf="@id/genre"
+            tools:text="@string/duration"
+            android:layout_marginStart="5dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
