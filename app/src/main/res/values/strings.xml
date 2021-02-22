@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MovieStarsApp</string>
+    <string name="title_fix">Title:</string>
+    <string name="title">Titanic</string>
+    <string name="year_fix">Year:</string>
+    <string name="year">1997</string>
+    <string name="genre_fix">Genre:</string>
+    <string name="genre">Romance/Drama</string>
+    <string name="duration_fix">Duration:</string>
+    <string name="duration">3h 50m</string>
+<!--    <string name="cast">Cast:</string>-->
+<!--    <string name="director">Director:</string>-->
+<!--    <string name="Summary">Summary:</string>-->
 </resources>
