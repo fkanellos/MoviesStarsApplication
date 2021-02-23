@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieStarsApp">
+
         <activity android:name=".User_Profile_Activity"/>
         <activity android:name=".Home_Page_Activity" />
         <activity android:name=".CreateAccountActivity" />
@@ -24,6 +25,11 @@
 
 
         <activity android:name=".SearchResultsActivity">
+
+        <activity android:name=".UsersPage" android:screenOrientation="fullSensor"></activity>
+        <activity android:name=".HomeScreen" android:label="@string/app_name" android:screenOrientation="fullSensor"></activity>
+        <activity android:name=".MainActivity" android:screenOrientation="fullSensor">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
