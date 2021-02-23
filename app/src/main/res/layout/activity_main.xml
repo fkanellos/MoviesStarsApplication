@@ -17,8 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:id="@+id/txt_editUser"
+
 
     <Button
         android:id="@+id/btnmain"
