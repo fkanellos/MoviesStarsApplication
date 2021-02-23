@@ -3,27 +3,28 @@ package com.example.moviestarsapp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModel;
-import androidx.lifecycle.AndroidViewModel;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Movie;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultsActivity extends AppCompatActivity {
 
+    private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
+    private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
+    private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
 
+    private String prefixPosterURL;
+//    private List<MovieModel> popularList;
+    private List<PopularDetails> listDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,48 +38,52 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         SearchResultsViewModel searchResultsViewModel = new ViewModelProvider(this).get(SearchResultsViewModel.class);
-//        ArrayList<Object> popularList;
 
-        TextView textView = findViewById(R.id.text);
-        searchResultsViewModel.retrievePopular(new PopularListener() {
-
-        String jsonString;
-
+        searchResultsViewModel.retrieveData(configURL, new RequestListener() {
             @Override
             public void onSuccessResponse(String msg) {
 
-                    jsonString = msg;
-                    ArrayList<JSONObject> popularList = new ArrayList<JSONObject>();
-                    try {
-                        JSONObject jsonObject = new JSONObject(jsonString);
-                        JSONArray results = jsonObject.getJSONArray("results");
-                        System.out.println(results);
-//                        for (int i=0; i<jsonArray.length();i++){
-//                            popularList.add(jsonArray.getJSONObject(i));
-//                        }
-//                        System.out.println(popularList.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    textView.setText(msg);
-                }
+                Gson gson = new Gson();
+                ConfigurationsResponse configurationsResponse = gson.fromJson(msg, ConfigurationsResponse.class);
+
+                String baseURL = configurationsResponse.getImages().getBase_url();
+                String sizeURL = configurationsResponse.getImages().getPoster_sizes()[4];
+                prefixPosterURL = baseURL + sizeURL;
+                Log.d("GOOD prefixPosterURL", prefixPosterURL);
+            }
+            @Override
+            public void onErrorResponse(String msg) {
+                Log.d("BAD prefixPosterURL", msg);
+            }
+        });
+
+        searchResultsViewModel.retrieveData(popularURL, new RequestListener() {
+            @Override
+            public void onSuccessResponse(String msg) {
+
+                Gson gson = new Gson();
+                PopularResponse response = gson.fromJson(msg, PopularResponse.class);
+                listDetails = response.getResults();
+
+                Log.d("GOOD popularList", msg);
             }
 
             @Override
             public void onErrorResponse(String msg) {
-                textView.setText(msg);
-
+                Log.d("BAD popularList", msg);
             }
         });
 
 
-        RecyclerView srRecyclerView = findViewById(R.id.search_results);
+
+            RecyclerView srRecyclerView = findViewById(R.id.search_results);
 
         SearchResultsAdapter srAdapter = new SearchResultsAdapter();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
 
         srRecyclerView.setLayoutManager(gridLayoutManager);
         srRecyclerView.setAdapter(srAdapter);
-        srAdapter.submitList(getMockUserList());
+        srAdapter.submitList(listDetails);
 
     }
 

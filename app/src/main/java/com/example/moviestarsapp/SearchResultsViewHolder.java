@@ -14,13 +14,13 @@ public class SearchResultsViewHolder extends RecyclerView.ViewHolder {
     }
 
     @SuppressLint("SetTextI18n")
-    public void bind(MovieModel movieModel){
+    public void bind(PopularDetails movieModel){
 
         TextView title = itemView.findViewById(R.id.title);
         title.setText("\"" + movieModel.getTitle() + "\"");
 
         TextView year = itemView.findViewById(R.id.year);
-        year.setText("(" + String.valueOf(movieModel.getYear())+ ")");
+        year.setText("(" + movieModel.getTitle()+ ")");
 
 //        TextView genre = itemView.findViewById(R.id.genre);
 //        genre.setText(movieModel.getGenre());

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
-public class SearchResultsAdapter extends ListAdapter<MovieModel, SearchResultsViewHolder> {
+public class SearchResultsAdapter extends ListAdapter<PopularDetails, SearchResultsViewHolder> {
 
     public SearchResultsAdapter() {
         super(new DiffUtilsItems());
@@ -26,7 +26,7 @@ public class SearchResultsAdapter extends ListAdapter<MovieModel, SearchResultsV
     @Override
     public void onBindViewHolder(@NonNull SearchResultsViewHolder holder, int position) {
 
-        MovieModel movieModel = getItem(position);
+        PopularDetails movieModel = getItem(position);
         holder.bind(movieModel);
     }
 }
