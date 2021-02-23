@@ -26,15 +26,15 @@ public class SearchResultsViewModel extends AndroidViewModel {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, requestURL,
                 new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        requestListener.onSuccessResponse(response);
-                    }
+                @Override
+                public void onResponse(String response) {
+                    requestListener.onSuccessResponse(response);
+                }
                 }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                requestListener.onErrorResponse(error.getMessage());
-            }
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    requestListener.onErrorResponse(error.getMessage());
+                }
         });
 
         queue.add(stringRequest);

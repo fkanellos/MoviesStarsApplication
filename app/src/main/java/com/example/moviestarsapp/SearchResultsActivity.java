@@ -23,7 +23,8 @@ public class SearchResultsActivity extends AppCompatActivity {
     private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
 
     private String prefixPosterURL;
-    private List<MovieModel> popularList;
+//    private List<MovieModel> popularList;
+    private List<PopularDetails> listDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                 ConfigurationsResponse configurationsResponse = gson.fromJson(msg, ConfigurationsResponse.class);
 
                 String baseURL = configurationsResponse.getImages().getBase_url();
-                String sizeURL = configurationsResponse.getImages().getPoster_sizes()[0];
+                String sizeURL = configurationsResponse.getImages().getPoster_sizes()[4];
                 prefixPosterURL = baseURL + sizeURL;
                 Log.d("GOOD prefixPosterURL", prefixPosterURL);
             }
@@ -61,10 +62,8 @@ public class SearchResultsActivity extends AppCompatActivity {
             public void onSuccessResponse(String msg) {
 
                 Gson gson = new Gson();
-                PopularResponse popularResponse = gson.fromJson(msg, PopularResponse.class);
-
-//                 = popularResponse;
-//                popularList = ;
+                PopularResponse response = gson.fromJson(msg, PopularResponse.class);
+                listDetails = response.getResults();
 
                 Log.d("GOOD popularList", msg);
             }
@@ -84,7 +83,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         srRecyclerView.setLayoutManager(gridLayoutManager);
         srRecyclerView.setAdapter(srAdapter);
-        srAdapter.submitList(getMockUserList());
+        srAdapter.submitList(listDetails);
 
     }
 
