@@ -8,7 +8,9 @@
     <string name="genre">Romance/Drama</string>
     <string name="duration_fix">Duration:</string>
     <string name="duration">3h 50m</string>
-<!--    <string name="cast">Cast:</string>-->
-<!--    <string name="director">Director:</string>-->
-<!--    <string name="Summary">Summary:</string>-->
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_username">Enter your username</string>
+    <!--    <string name="cast">Cast:</string>-->
+    <!--    <string name="director">Director:</string>-->
+    <!--    <string name="Summary">Summary:</string>-->
 </resources>
