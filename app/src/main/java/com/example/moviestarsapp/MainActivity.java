@@ -1,14 +1,45 @@
 package com.example.moviestarsapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Abstract {
+    @Override
+    int getLayout() {
+        return R.layout.activity_main;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    void setupValuesToUI() {
+        Button btn=findViewById(R.id.btnmain);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonfunction();
+            }
+        });
+    }
+
+    @Override
+    void startOperations() {
+        Log.d("Action:","startOperations!");
+
+    }
+
+    @Override
+    void stopOperations() {
+        Log.d("Action:","stopOperations!");
+    }
+
+    private void buttonfunction(){
+        Intent intent=new Intent(MainActivity.this,HomeScreen.class);
+        startActivity(intent);
+        finish();
     }
 }
