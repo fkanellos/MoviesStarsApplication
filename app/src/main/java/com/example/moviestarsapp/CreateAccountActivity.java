@@ -3,7 +3,6 @@ package com.example.moviestarsapp;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,16 +12,14 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-import static com.example.moviestarsapp.R.id.txt_editUser;
 
-public class MainActivity extends AppCompatActivity {
+public class CreateAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
 
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -32,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText userNameEdit = findViewById(txt_editUser);
+                EditText userNameEdit = findViewById(R.id.txt_editUser);
                 EditText passwdEdit = findViewById(R.id.txt_editPass);
                 String userStr = userNameEdit.getText().toString();
                 String passwdStr = passwdEdit.getText().toString();
 
                 if(userStr.matches("") || passwdStr.matches("")){
-                    Toast.makeText(MainActivity.this, "username or password empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccountActivity.this, "username or password empty", Toast.LENGTH_SHORT).show();
                 }else {
-                    Intent intent = new Intent(MainActivity.this, Home_Page_Activity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, User_Profile_Activity.class);
                     startActivity(intent);
                 }
             }
