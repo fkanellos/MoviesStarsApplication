@@ -61,7 +61,7 @@ public class SearchResultsActivity extends AppCompatActivity {
             public void onSuccessResponse(String msg) {
 
                 Gson gson = new Gson();
-                PopularResponse[] popularResponse = gson.fromJson(msg, PopularResponse[].class);
+                PopularResponse popularResponse = gson.fromJson(msg, PopularResponse.class);
 
 //                 = popularResponse;
 //                popularList = ;
