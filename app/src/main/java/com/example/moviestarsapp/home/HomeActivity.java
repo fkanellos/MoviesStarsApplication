@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moviestarsapp.PopularDetails;
@@ -19,8 +18,7 @@ import com.example.moviestarsapp.PopularResponse;
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.RequestListener;
 import com.example.moviestarsapp.SearchResultsAdapter;
-import com.example.moviestarsapp.profile.UseProfileActivity;
-import com.google.gson.Gson;
+import com.example.moviestarsapp.profile.UserProfileActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +90,7 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.search) {
 
         } else if (item.getItemId() == R.id.profile) {
-            Intent intent = new Intent(this, UseProfileActivity.class);
+            Intent intent = new Intent(this, UserProfileActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

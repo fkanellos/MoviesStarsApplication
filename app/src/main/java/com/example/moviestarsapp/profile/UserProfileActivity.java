@@ -1,4 +1,4 @@
-package com.example.moviestarsapp;
+package com.example.moviestarsapp.profile;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.moviestarsapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 
-public class User_Profile_Activity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
 
     TextView name, email;
 
