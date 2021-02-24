@@ -8,24 +8,11 @@
 <!--    android:padding="64dp"-->
 
 
-    <TextView
-        android:id="@+id/text"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="MESSAGE"
-        tools:scrollHorizontally="true"
-        />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_results"
-        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
         tools:listitem="@layout/card_front"
         >
     </androidx.recyclerview.widget.RecyclerView>

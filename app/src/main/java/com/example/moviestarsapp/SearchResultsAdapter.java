@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.ListAdapter;
 
 public class SearchResultsAdapter extends ListAdapter<PopularDetails, SearchResultsViewHolder> {
 
-    public SearchResultsAdapter() {
+    private String url;
+
+    public SearchResultsAdapter(String url) {
         super(new DiffUtilsItems());
+        this.url = url;
     }
 
 
@@ -27,6 +30,6 @@ public class SearchResultsAdapter extends ListAdapter<PopularDetails, SearchResu
     public void onBindViewHolder(@NonNull SearchResultsViewHolder holder, int position) {
 
         PopularDetails movieModel = getItem(position);
-        holder.bind(movieModel);
+        holder.bind(movieModel, url);
     }
 }

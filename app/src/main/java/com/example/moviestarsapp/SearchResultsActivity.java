@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -23,8 +24,8 @@ public class SearchResultsActivity extends AppCompatActivity {
     private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
 
     private String prefixPosterURL;
-    //    private List<MovieModel> popularList;
     private List<PopularDetails> listDetails = new ArrayList<PopularDetails>();
+    private Boolean flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,10 @@ public class SearchResultsActivity extends AppCompatActivity {
 
         SearchResultsViewModel searchResultsViewModel = new ViewModelProvider(this).get(SearchResultsViewModel.class);
         RecyclerView srRecyclerView = findViewById(R.id.search_results);
-        SearchResultsAdapter srAdapter = new SearchResultsAdapter();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
-        srRecyclerView.setLayoutManager(gridLayoutManager);
-        srRecyclerView.setAdapter(srAdapter);
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
+//        srRecyclerView.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        srRecyclerView.setLayoutManager(linearLayoutManager);
 
         searchResultsViewModel.retrieveData(configURL, new RequestListener() {
             @Override
@@ -52,9 +53,34 @@ public class SearchResultsActivity extends AppCompatActivity {
                 ConfigurationsResponse configurationsResponse = gson.fromJson(msg, ConfigurationsResponse.class);
 
                 String baseURL = configurationsResponse.getImages().getBase_url();
-                String sizeURL = configurationsResponse.getImages().getPoster_sizes()[4];
+                String sizeURL = configurationsResponse.getImages().getPoster_sizes()[2];
                 prefixPosterURL = baseURL + sizeURL;
+
+                SearchResultsAdapter srAdapter = new SearchResultsAdapter(prefixPosterURL);
+                srRecyclerView.setAdapter(srAdapter);
+
                 Log.d("GOOD prefixPosterURL", prefixPosterURL);
+
+                searchResultsViewModel.retrieveData(popularURL, new RequestListener() {
+                    @Override
+                    public void onSuccessResponse(String msg) {
+
+                        Gson gson = new Gson();
+                        PopularResponse response = gson.fromJson(msg, PopularResponse.class);
+                        listDetails = response.getResults();
+                        srAdapter.submitList(listDetails);
+
+                        String epitelous = prefixPosterURL + listDetails.get(0).getPoster_path();
+
+                        Log.d("GOOD popularList", epitelous);
+                    }
+
+                    @Override
+                    public void onErrorResponse(String msg) {
+                        Log.d("BAD popularList", msg);
+                    }
+                });
+
             }
             @Override
             public void onErrorResponse(String msg) {
@@ -62,23 +88,6 @@ public class SearchResultsActivity extends AppCompatActivity {
             }
         });
 
-        searchResultsViewModel.retrieveData(popularURL, new RequestListener() {
-            @Override
-            public void onSuccessResponse(String msg) {
-
-                Gson gson = new Gson();
-                PopularResponse response = gson.fromJson(msg, PopularResponse.class);
-                listDetails = response.getResults();
-                srAdapter.submitList(listDetails);
-
-                Log.d("GOOD popularList", msg);
-            }
-
-            @Override
-            public void onErrorResponse(String msg) {
-                Log.d("BAD popularList", msg);
-            }
-        });
 
     }
 
