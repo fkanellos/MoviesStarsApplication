@@ -116,56 +116,12 @@ public class MainActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
                 String userStr = userNameEdit.getText().toString();
                 String passwdStr = passwdEdit.getText().toString();
 
-                if(userStr.matches("") || passwdStr.matches("")){
+                if (userStr.matches("") || passwdStr.matches("")) {
                     Toast.makeText(MainActivity.this, "username or password empty", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Intent intent = new Intent(MainActivity.this, Home_Page_Activity.class);
                     startActivity(intent);
                 }
             }
         });
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-
-public class MainActivity extends Abstract {
-    @Override
-    int getLayout() {
-        return R.layout.activity_main;
-    }
-
-    @Override
-    void setupValuesToUI() {
-        Button btn=findViewById(R.id.btnmain);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonfunction();
-            }
-        });
-    }
-
-    @Override
-    void startOperations() {
-        Log.d("Action:","startOperations!");
-
-    }
-
-    @Override
-    void stopOperations() {
-        Log.d("Action:","stopOperations!");
-    }
-
-    private void buttonfunction(){
-        Intent intent=new Intent(MainActivity.this,HomeScreen.class);
-        startActivity(intent);
-        finish();
-
-    }
-}
+}}

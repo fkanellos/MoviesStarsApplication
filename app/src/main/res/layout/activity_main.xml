@@ -18,7 +18,7 @@
 
 
     <EditText
-        android:id="@+id/txt_editUser"
+        android:id="@+id/txt_editUser"/>
 
     <Button
         android:id="@+id/btnmain"
