@@ -49,14 +49,8 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(BuildConfig.DEBUG){
-                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                }else {
-                    Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
-                    startActivity(intent);
-                }
-
+                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
                 finish();
             }
         }, SPLASH_SCREEN);
