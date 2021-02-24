@@ -1,72 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txt_movieBible"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:textAlignment="center"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="login page!"
-        app:layout_constraintBottom_toTopOf="@id/txt_editUser"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txt_editUser"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        app:layout_constraintBottom_toTopOf="@id/txt_editPass"
-        android:hint="@string/enter_your_username" />
-
-    <EditText
-        android:id="@+id/txt_editPass"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="@id/txt_editUser"
-        app:layout_constraintRight_toRightOf="@id/txt_editUser"
-        android:layout_marginBottom="16dp"
-        android:hint="@string/enter_your_password"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crt_account"
-         />
-
-    <Button
-        android:id="@+id/btn_crt_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Create An Account"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="372dp"
+        android:layout_height="466dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/moviebible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btn_signIn"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/movieBible"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="32dp"
-        android:background="#000000"
-        android:textColorHint="@android:color/white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_crt_account"
-
-        />
-
-
-
-
-
+        android:text="@string/moviebible"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
