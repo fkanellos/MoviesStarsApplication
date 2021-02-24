@@ -67,4 +67,10 @@ public class PopularResponse {
                 ", total_pages=" + total_pages +
                 '}';
     }
+
+    public void setThePosterUrl(String prefixPosterURL) {
+        for (PopularDetails item : results) {
+            item.setPosterPrefixPath(prefixPosterURL);
+        }
+    }
 }

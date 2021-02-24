@@ -2,7 +2,7 @@ package com.example.moviestarsapp;
 
 public interface RequestListener {
 
-    void onSuccessResponse(String msg);
+    void onSuccessResponse(PopularResponse response);
     void onErrorResponse(String msg);
 
 }

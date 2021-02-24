@@ -1,9 +1,4 @@
-package com.example.moviestarsapp;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
+package com.example.moviestarsapp.create_account;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +7,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.home.HomeActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,7 +30,7 @@ import static com.example.moviestarsapp.R.id.txt_editUser;
 
 public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
-    private  final static int RC_SIGN_IN = 123;
+    private final static int RC_SIGN_IN = 123;
     Button verify;
     private FirebaseAuth mAuth;
 
@@ -58,6 +58,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -90,12 +91,12 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),Home_Page_Activity.class);
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
 
                         } else {
                             Toast.makeText(CreateAccountActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
-                        }                        // ...
+                        }
                     }
                 });
 
@@ -115,10 +116,10 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
                 String userStr = userNameEdit.getText().toString();
                 String passwdStr = passwdEdit.getText().toString();
 
-                if(userStr.matches("") || passwdStr.matches("")){
+                if (userStr.matches("") || passwdStr.matches("")) {
                     Toast.makeText(CreateAccountActivity.this, "username or password empty", Toast.LENGTH_SHORT).show();
-                }else {
-                    Intent intent = new Intent(CreateAccountActivity.this, Home_Page_Activity.class);
+                } else {
+                    Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
             }

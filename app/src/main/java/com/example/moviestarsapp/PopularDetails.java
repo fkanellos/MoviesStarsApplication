@@ -20,6 +20,10 @@ public class PopularDetails {
     private Boolean video;
     private double vote_average;
 
+    public void setPosterPrefixPath(String prefix) {
+        poster_path = prefix + poster_path;
+    }
+
     public String getPoster_path() {
         return poster_path;
     }

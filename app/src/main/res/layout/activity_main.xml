@@ -1,39 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/txt_movieBible"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:textAlignment="center"
-    tools:context=".MainActivity">
+    android:gravity="center"
+    android:orientation="vertical">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="372dp"
-        android:layout_height="466dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/moviebible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:src="@drawable/moviebible" />
 
     <TextView
         android:id="@+id/movieBible"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/moviebible"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        android:layout_marginTop="26dp"
+        android:textStyle="italic" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
