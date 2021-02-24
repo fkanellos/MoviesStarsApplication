@@ -24,7 +24,7 @@ public class SearchResultsActivity extends AppCompatActivity {
 
     private String prefixPosterURL;
 //    private List<MovieModel> popularList;
-    private List<PopularDetails> listDetails;
+    private List<PopularDetails> listDetails = new ArrayList<PopularDetails>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,11 @@ public class SearchResultsActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         SearchResultsViewModel searchResultsViewModel = new ViewModelProvider(this).get(SearchResultsViewModel.class);
+        RecyclerView srRecyclerView = findViewById(R.id.search_results);
+        SearchResultsAdapter srAdapter = new SearchResultsAdapter();
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
+        srRecyclerView.setLayoutManager(gridLayoutManager);
+        srRecyclerView.setAdapter(srAdapter);
 
         searchResultsViewModel.retrieveData(configURL, new RequestListener() {
             @Override
@@ -64,6 +69,7 @@ public class SearchResultsActivity extends AppCompatActivity {
                 Gson gson = new Gson();
                 PopularResponse response = gson.fromJson(msg, PopularResponse.class);
                 listDetails = response.getResults();
+                srAdapter.submitList(listDetails);
 
                 Log.d("GOOD popularList", msg);
             }
@@ -73,17 +79,6 @@ public class SearchResultsActivity extends AppCompatActivity {
                 Log.d("BAD popularList", msg);
             }
         });
-
-
-
-            RecyclerView srRecyclerView = findViewById(R.id.search_results);
-
-        SearchResultsAdapter srAdapter = new SearchResultsAdapter();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
-
-        srRecyclerView.setLayoutManager(gridLayoutManager);
-        srRecyclerView.setAdapter(srAdapter);
-        srAdapter.submitList(listDetails);
 
     }
 
