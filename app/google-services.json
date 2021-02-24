@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "119285163295",
+    "project_id": "moviebible-cb72a",
+    "storage_bucket": "moviebible-cb72a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119285163295:android:126cdabea63990b9237c2a",
+        "android_client_info": {
+          "package_name": "com.example.moviestarsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119285163295-agpf9laig17mggafntiga9ik1t8gppq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moviestarsapp",
+            "certificate_hash": "28c930728a36cb10b3be9a11d0c95cdab9022619"
+          }
+        },
+        {
+          "client_id": "119285163295-2n0f0a1ad6k2gnr58dkvr85anpm932v7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhUbzPn22Zti4ddNBpQcARzVXK4T2BMSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119285163295-2n0f0a1ad6k2gnr58dkvr85anpm932v7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
