@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.home.HomeActivity;
+import com.example.moviestarsapp.register.RegisterActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -25,8 +26,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import static com.example.moviestarsapp.R.id.txt_editUser;
 
 public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
@@ -107,12 +106,14 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
     public void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        Button btnLogin = findViewById(R.id.btn_crt_account);
+        Button btnLogin = findViewById(R.id.sign_in);
+        Button btnRegister = findViewById(R.id.register);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText userNameEdit = findViewById(txt_editUser);
-                EditText passwdEdit = findViewById(R.id.txt_editPass);
+                EditText userNameEdit = findViewById(R.id.username_edit);
+                EditText passwdEdit = findViewById(R.id.password_edit);
                 String userStr = userNameEdit.getText().toString();
                 String passwdStr = passwdEdit.getText().toString();
 
@@ -122,6 +123,14 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity {
                     Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateAccountActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

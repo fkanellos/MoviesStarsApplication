@@ -12,12 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieStarsApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".register.RegisterActivity"></activity>
+
         <activity
             android:name=".home.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="fullSensor" />
         <activity android:name=".profile.UserProfileActivity" />
+        <activity android:name=".register.RegisterActivity" />
         <activity android:name=".create_account.CreateAccountActivity" /> <!-- <activity android:name=".MainActivity" > -->
         <!-- <intent-filter> -->
         <!-- <action android:name="android.intent.action.MAIN" /> -->

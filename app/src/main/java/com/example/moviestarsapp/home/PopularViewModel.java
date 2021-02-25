@@ -31,7 +31,6 @@ public class PopularViewModel extends AndroidViewModel {
         super(application);
 
         queue = Volley.newRequestQueue(application);
-
         retrieveConfiguration();
     }
 
@@ -41,10 +40,12 @@ public class PopularViewModel extends AndroidViewModel {
                     @Override
                     public void onResponse(String response) {
                         Gson gson = new Gson();
+
+//                      prefixURL -> imageURLpath
                         ConfigurationsResponse configurationsResponse = gson.fromJson(response, ConfigurationsResponse.class);
 
                         String baseURL = configurationsResponse.getImages().getBase_url();
-                        String sizeURL = configurationsResponse.getImages().getPoster_sizes()[4];
+                        String sizeURL = configurationsResponse.getImages().getPoster_sizes()[3];
                         prefixPosterURL = baseURL + sizeURL;
                         Log.d("GOOD prefixPosterURL", prefixPosterURL);
                     }

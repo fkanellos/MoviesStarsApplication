@@ -11,4 +11,13 @@
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_your_username">Enter your username</string>
     <string name="moviebible">MovieBible</string>
+    <string name="new_user">New User</string>
+    <string name="email">e-mail</string>
+    <string name="user">Username</string>
+    <string name="pass">Password</string>
+    <string name="repeat">Repeat password</string>
+    <string name="ok">Submit</string>
+    <string name="reg">Register</string>
+    <string name="sgn">Sign In</string>
+    <string name="login">Login</string>
 </resources>
