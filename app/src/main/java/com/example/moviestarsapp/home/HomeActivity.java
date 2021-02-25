@@ -49,7 +49,12 @@ public class HomeActivity extends AppCompatActivity {
             public void onSuccessResponse(JsonResponse response) {
 
                 movieList = response.getResults();
-                popularAdapter.submitList(movieList);
+
+                List<MovieModel> savedData = popularAdapter.getCurrentList();
+                List<MovieModel> newList = new ArrayList<>();
+                newList.addAll(savedData);
+                newList.addAll(movieList);
+                popularAdapter.submitList(newList);
             }
 
             @Override

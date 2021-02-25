@@ -60,6 +60,7 @@ public class PopularViewModel extends AndroidViewModel {
     }
 
     public void retrievePopular(RequestListener requestListener) {
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, popularURL,
                 new Response.Listener<String>() {
                     @Override
@@ -69,6 +70,7 @@ public class PopularViewModel extends AndroidViewModel {
                         response.setThePosterUrl(prefixPosterURL);
 
                         requestListener.onSuccessResponse(response);
+                        //TODO("have another page? YES run again NO forgot: RECURSION")
                     }
                 }, new Response.ErrorListener() {
             @Override
