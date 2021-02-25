@@ -36,9 +36,6 @@ public class UserProfileActivity extends AppCompatActivity {
         }
 
 
-
-
-
         Button btn_Out = findViewById(R.id.btn_signOut);
         btn_Out.setOnClickListener(new View.OnClickListener() {
             @Override

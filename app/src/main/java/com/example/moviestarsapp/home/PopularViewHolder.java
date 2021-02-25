@@ -1,4 +1,4 @@
-package com.example.moviestarsapp;
+package com.example.moviestarsapp.home;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,14 +8,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.shared.json.MovieModel;
 
-public class SearchResultsViewHolder extends RecyclerView.ViewHolder {
+public class PopularViewHolder extends RecyclerView.ViewHolder {
 
-    public SearchResultsViewHolder(@NonNull View itemView) {
+    public PopularViewHolder(@NonNull View itemView) {
         super(itemView);
     }
 
-    public void bind(PopularDetails movieModel) {
+    public void bind(MovieModel movieModel) {
 
         TextView title = itemView.findViewById(R.id.title);
         title.setText("\"" + movieModel.getTitle() + "\"");

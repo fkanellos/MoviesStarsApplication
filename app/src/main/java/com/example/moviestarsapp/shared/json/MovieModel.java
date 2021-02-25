@@ -1,9 +1,9 @@
-package com.example.moviestarsapp;
+package com.example.moviestarsapp.shared.json;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class PopularDetails {
+public class MovieModel {
 
     private String poster_path;
     private Boolean adult;
@@ -140,7 +140,7 @@ public class PopularDetails {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PopularDetails that = (PopularDetails) o;
+        MovieModel that = (MovieModel) o;
         return getId() == that.getId() &&
                 Double.compare(that.getPopularity(), getPopularity()) == 0 &&
                 getVote_count() == that.getVote_count() &&

@@ -12,12 +12,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.moviestarsapp.ConfigurationsResponse;
-import com.example.moviestarsapp.PopularResponse;
-import com.example.moviestarsapp.RequestListener;
+import com.example.moviestarsapp.shared.json.ConfigurationsResponse;
+import com.example.moviestarsapp.shared.json.JsonResponse;
+import com.example.moviestarsapp.shared.RequestListener;
 import com.google.gson.Gson;
 
-public class SearchResultViewModel extends AndroidViewModel {
+public class PopularViewModel extends AndroidViewModel {
 
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
@@ -27,7 +27,7 @@ public class SearchResultViewModel extends AndroidViewModel {
     @NonNull
     private RequestQueue queue;
 
-    public SearchResultViewModel(@NonNull Application application) {
+    public PopularViewModel(@NonNull Application application) {
         super(application);
 
         queue = Volley.newRequestQueue(application);
@@ -64,7 +64,7 @@ public class SearchResultViewModel extends AndroidViewModel {
                     @Override
                     public void onResponse(String msg) {
                         Gson gson = new Gson();
-                        PopularResponse response = gson.fromJson(msg, PopularResponse.class);
+                        JsonResponse response = gson.fromJson(msg, JsonResponse.class);
                         response.setThePosterUrl(prefixPosterURL);
 
                         requestListener.onSuccessResponse(response);

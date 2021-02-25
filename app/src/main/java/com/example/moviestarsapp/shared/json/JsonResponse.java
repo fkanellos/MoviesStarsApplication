@@ -1,12 +1,12 @@
-package com.example.moviestarsapp;
+package com.example.moviestarsapp.shared.json;
 
 import java.util.List;
 import java.util.Objects;
 
-public class PopularResponse {
+public class JsonResponse {
 
     private int page;
-    private List<PopularDetails> results;
+    private List<MovieModel> results;
     private int total_results;
     private int total_pages;
 
@@ -18,11 +18,11 @@ public class PopularResponse {
         this.page = page;
     }
 
-    public List<PopularDetails> getResults() {
+    public List<MovieModel> getResults() {
         return results;
     }
 
-    public void setResults(List<PopularDetails> results) {
+    public void setResults(List<MovieModel> results) {
         this.results = results;
     }
 
@@ -46,7 +46,7 @@ public class PopularResponse {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PopularResponse that = (PopularResponse) o;
+        JsonResponse that = (JsonResponse) o;
         return getPage() == that.getPage() &&
                 getTotal_results() == that.getTotal_results() &&
                 getTotal_pages() == that.getTotal_pages() &&
@@ -69,7 +69,7 @@ public class PopularResponse {
     }
 
     public void setThePosterUrl(String prefixPosterURL) {
-        for (PopularDetails item : results) {
+        for (MovieModel item : results) {
             item.setPosterPrefixPath(prefixPosterURL);
         }
     }

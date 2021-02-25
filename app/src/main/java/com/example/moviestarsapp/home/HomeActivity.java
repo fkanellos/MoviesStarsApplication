@@ -13,11 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.moviestarsapp.PopularDetails;
-import com.example.moviestarsapp.PopularResponse;
+import com.example.moviestarsapp.shared.json.MovieModel;
+import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.RequestListener;
-import com.example.moviestarsapp.SearchResultsAdapter;
+import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.profile.UserProfileActivity;
 
 import java.util.ArrayList;
@@ -25,8 +24,8 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private SearchResultViewModel viewModel;
-    private List<PopularDetails> listDetails = new ArrayList<PopularDetails>();
+    private PopularViewModel viewModel;
+    private List<MovieModel> movieList = new ArrayList<MovieModel>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +33,23 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        viewModel = new ViewModelProvider(this).get(SearchResultViewModel.class);
+        viewModel = new ViewModelProvider(this).get(PopularViewModel.class);
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        SearchResultsAdapter srAdapter = new SearchResultsAdapter();
-        RecyclerView srRecyclerView = findViewById(R.id.recyclerView);
-        srRecyclerView.setAdapter(srAdapter);
+        PopularAdapter popularAdapter = new PopularAdapter();
+        RecyclerView popularRecyclerView = findViewById(R.id.recyclerView);
+        popularRecyclerView.setAdapter(popularAdapter);
 
         viewModel.retrievePopular(new RequestListener() {
             @Override
-            public void onSuccessResponse(PopularResponse response) {
+            public void onSuccessResponse(JsonResponse response) {
 
-                listDetails = response.getResults();
-                srAdapter.submitList(listDetails);
+                movieList = response.getResults();
+                popularAdapter.submitList(movieList);
             }
 
             @Override

@@ -1,4 +1,4 @@
-package com.example.moviestarsapp;
+package com.example.moviestarsapp.shared.json;
 
 public class ImageConfigurations {
 
