@@ -14,8 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="horizontal"
         tools:listitem="@layout/card_front"
         >
     </androidx.recyclerview.widget.RecyclerView>

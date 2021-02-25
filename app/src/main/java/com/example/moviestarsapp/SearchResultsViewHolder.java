@@ -21,7 +21,8 @@ public class SearchResultsViewHolder extends RecyclerView.ViewHolder {
         title.setText("\"" + movieModel.getTitle() + "\"");
 
         TextView year = itemView.findViewById(R.id.year);
-        year.setText("(" + movieModel.getTitle() + ")");
+        String releaseYear = movieModel.getRelease_date().split("-")[0];
+        year.setText("(" + releaseYear + ")");
 
 
         ImageView imageView = itemView.findViewById(R.id.img);
