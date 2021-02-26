@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moviestarsapp.SearchKaterina.SearchResult;
 import com.example.moviestarsapp.shared.json.MovieModel;
 import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.example.moviestarsapp.R;
@@ -77,7 +78,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //TODO("handle the search keyword from user")
-                return false;
+                Intent intent=new Intent(HomeActivity.this, SearchResult.class);
+                Bundle parameter= new Bundle();
+                parameter.putString("Search",query);
+                intent.putExtras(parameter);
+                startActivity(intent);
+
+                return true;
             }
 
             @Override
