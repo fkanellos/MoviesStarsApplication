@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         setSupportActionBar(findViewById(R.id.toolbar));
 
+
         viewModel = new ViewModelProvider(this).get(PopularViewModel.class);
     }
 
@@ -74,10 +75,10 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
 
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setQueryHint("Search movie");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //TODO("handle the search keyword from user")
                 Intent intent=new Intent(HomeActivity.this, SearchResult.class);
                 Bundle parameter= new Bundle();
                 parameter.putString("Search",query);

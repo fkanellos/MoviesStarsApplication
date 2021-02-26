@@ -1,12 +1,15 @@
 package com.example.moviestarsapp.SearchKaterina;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.SimpleCursorAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -80,23 +83,26 @@ public class SearchResult extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
 
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setQueryHint("Search movie");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //TODO("handle the search keyword from user")
-
 
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
+                if (newText.length()>=3){
                 Intent intent=new Intent(SearchResult.this, SearchResult.class);
                 Bundle parameter= new Bundle();
                 parameter.putString("Search",newText);
                 intent.putExtras(parameter);
-                startActivity(intent);
-                return true;
+                startActivity(intent);}
+
+//                put here handle the search
+                return false;
             }
         });
         return super.onPrepareOptionsMenu(menu);
