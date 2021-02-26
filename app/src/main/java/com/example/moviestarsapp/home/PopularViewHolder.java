@@ -36,7 +36,7 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
         }
 
         ImageView imageView = itemView.findViewById(R.id.img);
-        Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_cam_svgrepo_com).into(imageView);
+        Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_svgrepo_com).into(imageView);
 
 //        itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override

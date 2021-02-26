@@ -49,16 +49,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onSuccessResponse(JsonResponse response) {
 
-                 responseMovieList = response.getResults();
-                 movieList.addAll(responseMovieList);
-//                List<MovieModel> savedData = popularAdapter.getCurrentList();
-//                List<MovieModel> newList = new ArrayList<>();
-//                newList.addAll(savedData);
-//                newList.addAll(movieList);
-//                popularAdapter.submitList(newList);
-//                if (viewModel.page==3) {
-                    popularAdapter.submitList(movieList);
-//                }
+                responseMovieList = response.getResults();
+                movieList.addAll(responseMovieList);
+                popularAdapter.submitList(movieList);
             }
 
             @Override
