@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.movie.details;
+package com.example.moviestarsapp.movie_details;
 
 import androidx.appcompat.app.AppCompatActivity;
 
