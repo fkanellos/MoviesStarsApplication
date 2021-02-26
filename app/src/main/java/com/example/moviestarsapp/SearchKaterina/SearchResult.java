@@ -84,18 +84,19 @@ public class SearchResult extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //TODO("handle the search keyword from user")
-                Intent intent=new Intent(SearchResult.this, SearchResult.class);
-                Bundle parameter= new Bundle();
-                parameter.putString("Search",query);
-                intent.putExtras(parameter);
-                startActivity(intent);
 
-                return true;
+
+                return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+                Intent intent=new Intent(SearchResult.this, SearchResult.class);
+                Bundle parameter= new Bundle();
+                parameter.putString("Search",newText);
+                intent.putExtras(parameter);
+                startActivity(intent);
+                return true;
             }
         });
         return super.onPrepareOptionsMenu(menu);
