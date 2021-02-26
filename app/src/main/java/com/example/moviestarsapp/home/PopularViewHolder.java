@@ -2,6 +2,7 @@ package com.example.moviestarsapp.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,15 +25,18 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
     public void bind(MovieModel movieModel) {
 
         TextView title = itemView.findViewById(R.id.title);
-        title.setText("\"" + movieModel.getTitle() + "\"");
+        if (movieModel.getTitle()!=null) {
+            title.setText("\"" + movieModel.getTitle() + "\"");
+        }
 
         TextView year = itemView.findViewById(R.id.year);
-        String releaseYear = movieModel.getRelease_date().split("-")[0];
-        year.setText("(" + releaseYear + ")");
-
+        if (movieModel.getRelease_date()!=null) {
+            String releaseYear = movieModel.getRelease_date().split("-")[0];
+            year.setText("(" + releaseYear + ")");
+        }
 
         ImageView imageView = itemView.findViewById(R.id.img);
-        Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).into(imageView);
+        Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_cam_svgrepo_com).into(imageView);
 
 //        itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override

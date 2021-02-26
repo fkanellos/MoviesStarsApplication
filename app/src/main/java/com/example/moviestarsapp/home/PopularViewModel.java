@@ -75,8 +75,7 @@ public class PopularViewModel extends AndroidViewModel {
                         Log.d("RECURSION", "onResponse: " + popularPageURL);
                         requestListener.onSuccessResponse(response);
 
-                        if(page<=7){retrievePopular(requestListener);}
-                        //TODO("have another page? YES run again NO forgot: RECURSION")
+                        if(page<=response.getTotal_pages()){retrievePopular(requestListener);}
                     }
                 }, new Response.ErrorListener() {
             @Override
