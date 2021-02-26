@@ -50,7 +50,7 @@ public class SearchResult extends AppCompatActivity {
         SearchAdapter adapter = new SearchAdapter();
         recyclerView.setAdapter(adapter);
 
-        searchViewModel.retrieveMovie(new RequestListener() {
+        searchViewModel.retrieveMovie(word,new RequestListener() {
             @Override
             public void onSuccessResponse(JsonResponse response) {
                 searchList = response.getResults();

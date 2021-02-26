@@ -26,7 +26,6 @@ public class SearchViewModel extends AndroidViewModel {
     private String prefixPosterURL;
     @NonNull
     private RequestQueue queue;
-    private String word;
 
     public SearchViewModel(@NonNull Application application) {
         super(application);
@@ -57,7 +56,7 @@ public class SearchViewModel extends AndroidViewModel {
         queue.add(stringRequest);
     }
 
-    public void retrieveMovie(RequestListener requestListener) {
+    public void retrieveMovie(String word,RequestListener requestListener) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, startUrl+word+endUrl,
                 new Response.Listener<String>() {
@@ -68,7 +67,6 @@ public class SearchViewModel extends AndroidViewModel {
                         response.setThePosterUrl(prefixPosterURL);
 
                         requestListener.onSuccessResponse(response);
-                        //TODO("have another page? YES run again NO forgot: RECURSION")
                     }
                 }, new Response.ErrorListener() {
             @Override
