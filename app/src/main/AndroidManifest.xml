@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".movie.details.MovieDetailsActivity"></activity>
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".splash.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="fullSensor" />
         <activity android:name=".profile.UserProfileActivity" />
@@ -23,7 +23,7 @@
             android:name=".create_account.CreateAccountActivity"
             android:theme="@style/Theme.loginTheme" />
         <activity
-            android:name=".splash.MainActivity"
+            android:name=".home.HomeActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
