@@ -3,7 +3,10 @@ package com.example.moviestarsapp.SearchKaterina;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.home.HomeActivity;
 import com.example.moviestarsapp.profile.UserProfileActivity;
 import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.shared.json.JsonResponse;
@@ -29,7 +33,7 @@ public class SearchResult extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
-        setSupportActionBar(findViewById(R.id.toolbar));
+        setSupportActionBar(findViewById(R.id.toolbar_search));
 
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
 
@@ -65,6 +69,36 @@ public class SearchResult extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //TODO("handle the search keyword from user")
+                Intent intent=new Intent(SearchResult.this, SearchResult.class);
+                Bundle parameter= new Bundle();
+                parameter.putString("Search",query);
+                intent.putExtras(parameter);
+                startActivity(intent);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onPrepareOptionsMenu(menu);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
