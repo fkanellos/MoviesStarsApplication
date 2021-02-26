@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 List<MovieModel> savedData = popularAdapter.getCurrentList();
                 List<MovieModel> newList = new ArrayList<>();
-                newList.addAll(savedData);
+                 newList.addAll(savedData);
                 newList.addAll(movieList);
                 popularAdapter.submitList(newList);
             }
