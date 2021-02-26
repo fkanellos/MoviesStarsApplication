@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.movie.details.MovieDetailsActivity;
 import com.example.moviestarsapp.shared.json.MovieModel;
 
 public class PopularViewHolder extends RecyclerView.ViewHolder {
@@ -37,12 +36,14 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int id = movieModel.getId();
                 Context context = itemView.getContext();
                 Intent intent = new Intent(context, MovieDetailsActivity.class);
                 Bundle parameter = new Bundle();
-                parameter.put;
-                intent.putExtra(parameter);
+                parameter.putInt("movieId",id);
+                intent.putExtras(parameter);
                 context.startActivity(intent);
+
             }
         });
     }
