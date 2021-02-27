@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.SearchKaterina.SearchViewHolder;
+import com.example.moviestarsapp.search.SearchViewHolder;
 import com.example.moviestarsapp.shared.DiffUtilsItems;
 import com.example.moviestarsapp.shared.json.MovieModel;
 

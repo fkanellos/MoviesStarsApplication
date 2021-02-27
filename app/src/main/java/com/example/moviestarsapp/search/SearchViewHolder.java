@@ -1,5 +1,8 @@
-package com.example.moviestarsapp.SearchKaterina;
+package com.example.moviestarsapp.search;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,22 +31,27 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
             year.setText("(" + releaseYear + ")");
         }
 
+        TextView overviewSearch=itemView.findViewById(R.id.overview_search);
+        if (movieModel.getOverview()!=null) {
+            overviewSearch.setText("\"" + movieModel.getOverview() + "\"");
+        }
+
 
         ImageView imageView = itemView.findViewById(R.id.movie_img);
         Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_svgrepo_com).into(imageView);
 
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int id = movieModel.getId();
-//                Context context = itemView.getContext();
-//                Intent intent = new Intent(context, MovieDetailsActivity.class);
-//                Bundle parameter = new Bundle();
-//                parameter.putInt("movieId",id);
-//                intent.putExtras(parameter);
-//                context.startActivity(intent);
-//
-//            }
-//        });
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = movieModel.getId();
+                Context context = itemView.getContext();
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                Bundle parameter = new Bundle();
+                parameter.putInt("movieId",id);
+                intent.putExtras(parameter);
+                context.startActivity(intent);
+
+            }
+        });
     }
 }
