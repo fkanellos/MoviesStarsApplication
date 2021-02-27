@@ -1,15 +1,11 @@
-package com.example.moviestarsapp.SearchKaterina;
+package com.example.moviestarsapp.search;
 
-import android.app.Activity;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.home.HomeActivity;
 import com.example.moviestarsapp.profile.UserProfileActivity;
 import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.shared.json.JsonResponse;

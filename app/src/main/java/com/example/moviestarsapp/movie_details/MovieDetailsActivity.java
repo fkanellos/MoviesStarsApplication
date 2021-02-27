@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.home;
+package com.example.moviestarsapp.movie_details;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.SearchKaterina.SearchResult;
+import com.example.moviestarsapp.movie_details.DetailsJsonResponse;
+import com.example.moviestarsapp.movie_details.DetailsRequestListener;
+import com.example.moviestarsapp.movie_details.DetailsViewModel;
 import com.example.moviestarsapp.profile.UserProfileActivity;
-import com.example.moviestarsapp.shared.json.DetailsJsonResponse;
-import com.example.moviestarsapp.shared.json.DetailsRequestListener;
+import com.example.moviestarsapp.search.SearchResult;
+
 
 public class MovieDetailsActivity<parameter> extends AppCompatActivity {
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
@@ -33,7 +35,7 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setSupportActionBar(findViewById(R.id.toolbar_details));
+        setSupportActionBar(findViewById(R.id.toolbar_search));
         setContentView(R.layout.movie_details_activity);
         detailsViewModel= new ViewModelProvider(this).get(DetailsViewModel.class);
 
