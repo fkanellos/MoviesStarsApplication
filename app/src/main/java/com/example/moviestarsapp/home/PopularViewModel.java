@@ -15,7 +15,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.moviestarsapp.shared.json.ConfigurationsResponse;
 import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.example.moviestarsapp.shared.RequestListener;
+import com.example.moviestarsapp.shared.json.MovieModel;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class PopularViewModel extends AndroidViewModel {
 
@@ -113,6 +118,16 @@ public class PopularViewModel extends AndroidViewModel {
         queue.add(stringRequest);
     }
 
+    public int idGenerator(List<MovieModel> movieModelList){
 
+        List<Integer> idList = new ArrayList<Integer>();
+        for (MovieModel movie:movieModelList) {
+            idList.add(movie.getId());
+        }
+        Random rand = new Random();
+        int id = idList.get(rand.nextInt(idList.size()));
+
+        return id;
+    }
 
 }

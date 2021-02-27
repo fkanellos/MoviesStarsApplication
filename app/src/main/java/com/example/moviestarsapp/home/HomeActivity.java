@@ -2,9 +2,11 @@ package com.example.moviestarsapp.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -13,12 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moviestarsapp.movie_details.MovieDetailsActivity;
 import com.example.moviestarsapp.search.SearchResult;
 import com.example.moviestarsapp.shared.json.MovieModel;
 import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.profile.UserProfileActivity;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +50,8 @@ public class HomeActivity extends AppCompatActivity {
         RecyclerView popularRecyclerView = findViewById(R.id.recyclerView);
         popularRecyclerView.setAdapter(popularAdapter);
 
+        MaterialButton randomBtn = findViewById(R.id.random_button);
+
         viewModel.retrievePopular(new RequestListener() {
             @Override
             public void onSuccessResponse(JsonResponse response) {
@@ -53,12 +59,28 @@ public class HomeActivity extends AppCompatActivity {
                 responseMovieList = response.getResults();
                 movieList.addAll(responseMovieList);
                 popularAdapter.submitList(movieList);
+
+                randomBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int randomId = viewModel.idGenerator(movieList);
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("movieId", randomId);
+                        Intent intent = new Intent(v.getContext(), MovieDetailsActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        Log.d("randomId", String.valueOf(randomId));
+                    }
+                });
             }
 
             @Override
             public void onErrorResponse(String msg) { }
         });
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -2,6 +2,7 @@ package com.example.moviestarsapp.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.example.moviestarsapp.shared.json.MovieModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PopularViewHolder extends RecyclerView.ViewHolder {
 
@@ -54,19 +56,4 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-
-//    public int randomId(List<MovieModel> movieModelList){
-//
-//        int movieId;
-//        ArrayList<Integer> idList = new ArrayList<Integer>();
-//        for (MovieModel movie:movieModelList){
-//            idList.add(movie.getId());
-//        }
-//
-//        = Math.random();
-//        int randomValue;
-//
-//        movieId = idList.get(randomValue);
-//     return movieId;
-//    }
 }
