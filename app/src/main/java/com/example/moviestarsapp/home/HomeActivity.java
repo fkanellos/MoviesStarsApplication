@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.moviestarsapp.movie_details.MovieDetailsActivity;
 import com.example.moviestarsapp.search.SearchResult;
 import com.example.moviestarsapp.shared.json.MovieModel;
 import com.example.moviestarsapp.shared.json.JsonResponse;

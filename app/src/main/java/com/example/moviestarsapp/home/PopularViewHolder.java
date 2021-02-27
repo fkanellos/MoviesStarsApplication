@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.movie_details.MovieDetailsActivity;
 import com.example.moviestarsapp.shared.json.MovieModel;
 
 import java.util.ArrayList;
