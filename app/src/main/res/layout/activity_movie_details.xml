@@ -7,8 +7,6 @@
     tools:context=".movie_details.MovieDetailsActivity"
     android:padding="20dp"
     >
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar_details"/>
 
 
     <ImageView
