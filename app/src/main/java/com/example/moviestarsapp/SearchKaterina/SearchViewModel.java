@@ -19,16 +19,22 @@ import com.google.gson.Gson;
 
 public class SearchViewModel extends AndroidViewModel {
 
+//https://api.themoviedb.org/3/search/movie?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US&query=woman&page=1&include_adult=false
+
     private final String startUrl="https://api.themoviedb.org/3/search/movie?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US&query=";
-    private final String endUrl="&page=1&include_adult=false";
+    private final String endUrl1="&page=";
+    private final String endUrl2="&include_adult=false";
+
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
     private String prefixPosterURL;
+    int page;
     @NonNull
     private RequestQueue queue;
 
     public SearchViewModel(@NonNull Application application) {
         super(application);
+        page = 0;
         queue = Volley.newRequestQueue(application);
         retrieveConfiguration();
     }
@@ -57,8 +63,9 @@ public class SearchViewModel extends AndroidViewModel {
     }
 
     public void retrieveMovie(String word,RequestListener requestListener) {
+        page = page + 1;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, startUrl+word+endUrl,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, startUrl+word+endUrl1+page+endUrl2,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String msg) {
@@ -67,12 +74,13 @@ public class SearchViewModel extends AndroidViewModel {
                         response.setThePosterUrl(prefixPosterURL);
 
                         requestListener.onSuccessResponse(response);
+                        if(page<=response.getTotal_pages()){retrieveMovie(word,requestListener);}
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 requestListener.onErrorResponse(error.getMessage());
-            }
+        }
         });
 
         queue.add(stringRequest);
