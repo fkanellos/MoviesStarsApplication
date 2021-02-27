@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.home;
+package com.example.moviestarsapp.search;
 
 import android.app.Application;
 import android.util.Log;
@@ -12,33 +12,32 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.shared.json.ConfigurationsResponse;
-import com.example.moviestarsapp.shared.json.DetailsJsonResponse;
-import com.example.moviestarsapp.shared.json.DetailsRequestListener;
+import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.google.gson.Gson;
 
-public class DetailsViewModel extends AndroidViewModel {
+public class SearchViewModel extends AndroidViewModel {
+
+//https://api.themoviedb.org/3/search/movie?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US&query=woman&page=1&include_adult=false
+
+    private final String startUrl="https://api.themoviedb.org/3/search/movie?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US&query=";
+    private final String endUrl1="&page=";
+    private final String endUrl2="&include_adult=false";
 
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
-    private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
-    private final String MovieDetailsURL = "https://api.themoviedb.org/3/movie/";
-    private final String MovieDetailURLEnd = "?api_key=" + APIKey;
-
-
-
-
     private String prefixPosterURL;
+    int page;
     @NonNull
     private RequestQueue queue;
 
-
-    public DetailsViewModel(@NonNull Application application) {
+    public SearchViewModel(@NonNull Application application) {
         super(application);
+        page = 0;
         queue = Volley.newRequestQueue(application);
         retrieveConfiguration();
     }
-
     private void retrieveConfiguration() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, configURL,
                 new Response.Listener<String>() {
@@ -46,7 +45,6 @@ public class DetailsViewModel extends AndroidViewModel {
                     public void onResponse(String response) {
                         Gson gson = new Gson();
 
-//                      prefixURL -> imageURLpath
                         ConfigurationsResponse configurationsResponse = gson.fromJson(response, ConfigurationsResponse.class);
 
                         String baseURL = configurationsResponse.getImages().getBase_url();
@@ -64,29 +62,27 @@ public class DetailsViewModel extends AndroidViewModel {
         queue.add(stringRequest);
     }
 
+    public void retrieveMovie(String word,RequestListener requestListener) {
+        page = page + 1;
 
-    public void retrieveMovieDetails(String strId , DetailsRequestListener detailRequestListener) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, MovieDetailsURL + strId + MovieDetailURLEnd,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, startUrl+word+endUrl1+page+endUrl2,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String msg) {
                         Gson gson = new Gson();
-                        DetailsJsonResponse response = gson.fromJson(msg, DetailsJsonResponse.class);
-                        response.setPosterPrefixPath(prefixPosterURL);
-                        detailRequestListener.onSuccessResponse(response);
+                        JsonResponse response = gson.fromJson(msg, JsonResponse.class);
+                        response.setThePosterUrl(prefixPosterURL);
 
+                        requestListener.onSuccessResponse(response);
+                        if(page<=response.getTotal_pages()){retrieveMovie(word,requestListener);}
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                detailRequestListener.onErrorResponse(error.getMessage());
-            }
+                requestListener.onErrorResponse(error.getMessage());
+        }
         });
 
         queue.add(stringRequest);
     }
-
-
-
 }

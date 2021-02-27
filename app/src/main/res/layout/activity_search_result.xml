@@ -4,10 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchKaterina.SearchResult">
+    tools:context=".search.SearchResult">
 
     <include layout="@layout/toolbar"
         android:id="@+id/toolbar_search"/>
+
+    <TextView
+        android:id="@+id/search_term"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textStyle="italic|bold"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/search_result_recycleView"
+        tools:text="Search Results:"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/search_result_recycleView"

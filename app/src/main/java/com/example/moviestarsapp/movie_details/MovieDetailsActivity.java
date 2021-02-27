@@ -1,19 +1,28 @@
-package com.example.moviestarsapp.movie.details;
+package com.example.moviestarsapp.movie_details;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.home.DetailsViewModel;
-import com.example.moviestarsapp.shared.json.DetailsJsonResponse;
-import com.example.moviestarsapp.shared.json.DetailsRequestListener;
+import com.example.moviestarsapp.movie_details.DetailsJsonResponse;
+import com.example.moviestarsapp.movie_details.DetailsRequestListener;
+import com.example.moviestarsapp.movie_details.DetailsViewModel;
+import com.example.moviestarsapp.profile.UserProfileActivity;
+import com.example.moviestarsapp.search.SearchResult;
+
 
 public class MovieDetailsActivity<parameter> extends AppCompatActivity {
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
@@ -92,4 +101,5 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
 
 
     }
+
 }
