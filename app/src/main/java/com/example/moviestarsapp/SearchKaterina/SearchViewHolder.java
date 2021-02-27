@@ -26,5 +26,8 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView = itemView.findViewById(R.id.movie_img);
         Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).into(imageView);
+
+
     }
+
 }

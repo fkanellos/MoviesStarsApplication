@@ -24,7 +24,8 @@
         android:text="@string/moviebible"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
+
         android:textStyle="italic" />
 
 
