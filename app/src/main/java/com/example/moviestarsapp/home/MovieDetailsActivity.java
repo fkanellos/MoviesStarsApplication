@@ -33,8 +33,7 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
-        setSupportActionBar(findViewById(R.id.toolbar_search));
+        setSupportActionBar(findViewById(R.id.toolbar_details));
         setContentView(R.layout.movie_details_activity);
         detailsViewModel= new ViewModelProvider(this).get(DetailsViewModel.class);
 
