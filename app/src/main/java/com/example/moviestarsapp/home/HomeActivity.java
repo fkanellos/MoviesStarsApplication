@@ -27,13 +27,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private PopularViewModel viewModel;
     private List<MovieModel> movieList = new ArrayList<MovieModel>();
+    private List<MovieModel> responseMovieList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setSupportActionBar(findViewById(R.id.toolbar));
-
 
         viewModel = new ViewModelProvider(this).get(PopularViewModel.class);
     }
@@ -50,13 +50,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onSuccessResponse(JsonResponse response) {
 
-                movieList = response.getResults();
-
-                List<MovieModel> savedData = popularAdapter.getCurrentList();
-                List<MovieModel> newList = new ArrayList<>();
-                 newList.addAll(savedData);
-                newList.addAll(movieList);
-                popularAdapter.submitList(newList);
+                responseMovieList = response.getResults();
+                movieList.addAll(responseMovieList);
+                popularAdapter.submitList(movieList);
             }
 
             @Override
