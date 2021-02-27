@@ -21,9 +21,10 @@ public class DetailsViewModel extends AndroidViewModel {
 
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
-    private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
     private final String MovieDetailsURL = "https://api.themoviedb.org/3/movie/";
     private final String MovieDetailURLEnd = "?api_key=" + APIKey;
+
+//    https://api.themoviedb.org/3/movie/464052?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US
 
 
 
