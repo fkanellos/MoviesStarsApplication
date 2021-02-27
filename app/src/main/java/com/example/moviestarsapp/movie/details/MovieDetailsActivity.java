@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.home;
+package com.example.moviestarsapp.movie.details;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.home.DetailsViewModel;
 import com.example.moviestarsapp.shared.json.DetailsJsonResponse;
 import com.example.moviestarsapp.shared.json.DetailsRequestListener;
 

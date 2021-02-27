@@ -2,7 +2,6 @@ package com.example.moviestarsapp.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
+import com.example.moviestarsapp.movie.details.MovieDetailsActivity;
 import com.example.moviestarsapp.shared.json.MovieModel;
 
 public class PopularViewHolder extends RecyclerView.ViewHolder {
