@@ -99,7 +99,7 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 Intent intent=new Intent(HomeActivity.this, SearchResult.class);
                 Bundle parameter= new Bundle();
-                parameter.putString("Search",query);
+                parameter.putString("Search", query);
                 intent.putExtras(parameter);
                 startActivity(intent);
 

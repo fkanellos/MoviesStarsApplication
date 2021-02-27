@@ -18,18 +18,20 @@
         <activity android:name=".search.SearchResult"/>
 
         <activity
-            android:name=".splash.MainActivity"
+            android:name=".home.HomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="fullSensor" />
 
         <activity android:name=".profile.UserProfileActivity" />
-        <activity android:name=".register.RegisterActivity" />
+        <activity android:name=".register.RegisterActivity"
+            android:theme="@style/Theme.loginTheme" />
+        />
 
         <activity
             android:name=".create_account.CreateAccountActivity"
             android:theme="@style/Theme.loginTheme" />
         <activity
-            android:name=".home.HomeActivity"
+            android:name=".splash.MainActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
