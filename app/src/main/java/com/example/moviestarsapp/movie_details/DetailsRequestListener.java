@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.shared.json;
+package com.example.moviestarsapp.movie_details;
 
 public interface DetailsRequestListener {
 

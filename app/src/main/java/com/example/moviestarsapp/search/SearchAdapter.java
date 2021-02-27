@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.SearchKaterina;
+package com.example.moviestarsapp.search;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +8,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.home.PopularViewHolder;
+import com.example.moviestarsapp.SearchKaterina.SearchViewHolder;
 import com.example.moviestarsapp.shared.DiffUtilsItems;
 import com.example.moviestarsapp.shared.json.MovieModel;
 
-public class SearchAdapter extends ListAdapter<MovieModel,SearchViewHolder> {
+public class SearchAdapter extends ListAdapter<MovieModel, SearchViewHolder> {
 
     public SearchAdapter(){
         super(new DiffUtilsItems());

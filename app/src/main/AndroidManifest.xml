@@ -13,9 +13,9 @@
         android:theme="@style/Theme.MovieStarsApp"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".home.MovieDetailsActivity"></activity>
 
-        <activity android:name=".SearchKaterina.SearchResult"/>
+        <activity android:name=".movie_details.MovieDetailsActivity"/>
+        <activity android:name=".search.SearchResult"/>
 
         <activity
             android:name=".splash.MainActivity"
