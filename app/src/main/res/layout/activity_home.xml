@@ -7,7 +7,24 @@
     tools:context=".home.HomeActivity">
 
     <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar"
+        />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/random_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        app:rippleColor="@color/white"
+        app:icon="@drawable/ic_movie_clapper_svgrepo_com"
+        android:paddingHorizontal="16dp"
+        android:text="Random Movie Generator"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -16,7 +33,7 @@
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/random_button"
         app:spanCount="3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
