@@ -22,6 +22,8 @@ public class PopularViewModel extends AndroidViewModel {
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
     private final String popularURL = "https://api.themoviedb.org/3/movie/popular?api_key=" + APIKey;
+    int page;
+
     private final String MovieDetailsURL = "https://api.themoviedb.org/3/movie/movieId?api_key=" + APIKey;
 
 
@@ -34,6 +36,7 @@ public class PopularViewModel extends AndroidViewModel {
     public PopularViewModel(@NonNull Application application) {
         super(application);
 
+        page = 0;
         queue = Volley.newRequestQueue(application);
         retrieveConfiguration();
     }
@@ -64,17 +67,19 @@ public class PopularViewModel extends AndroidViewModel {
     }
 
     public void retrievePopular(RequestListener requestListener) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, popularURL,
+        page = page + 1;
+        String popularPageURL = popularURL + "&page=" + page;
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, popularPageURL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String msg) {
                         Gson gson = new Gson();
                         JsonResponse response = gson.fromJson(msg, JsonResponse.class);
                         response.setThePosterUrl(prefixPosterURL);
-
+                        Log.d("RECURSION", "onResponse: " + popularPageURL);
                         requestListener.onSuccessResponse(response);
-                        //TODO("have another page? YES run again NO forgot: RECURSION")
+
+                        if(page<=response.getTotal_pages()){retrievePopular(requestListener);}
                     }
                 }, new Response.ErrorListener() {
             @Override

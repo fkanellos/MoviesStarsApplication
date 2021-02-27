@@ -17,17 +17,18 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
     }
     public void bind(MovieModel movieModel){
         TextView title=itemView.findViewById(R.id.movie_title);
-        title.setText("\"" + movieModel.getTitle() + "\"");
+        if (movieModel.getTitle()!=null) {
+            title.setText("\"" + movieModel.getTitle() + "\"");
+        }
 
         TextView year = itemView.findViewById(R.id.movie_year);
-        String releaseYear = movieModel.getRelease_date().split("-")[0];
-        year.setText("(" + releaseYear + ")");
+        if (movieModel.getRelease_date()!=null) {
+            String releaseYear = movieModel.getRelease_date().split("-")[0];
+            year.setText("(" + releaseYear + ")");
+        }
 
 
         ImageView imageView = itemView.findViewById(R.id.movie_img);
         Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).into(imageView);
-
-
     }
-
 }

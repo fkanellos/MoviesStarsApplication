@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".movie.details.MovieDetailsActivity"
+    tools:context=".movie_details.MovieDetailsActivity"
     android:padding="20dp"
     >
 
@@ -16,7 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/title_fix"
         tools:src="@drawable/ic_launcher_background"
-        />
+    />
 
     <TextView
         android:id="@+id/title_fix"
@@ -26,7 +26,7 @@
         app:layout_constraintRight_toRightOf="@id/title"
         app:layout_constraintTop_toTopOf="@id/img"
         android:text="@string/title_fix"
-        />
+    />
 
     <TextView
         android:id="@+id/year_fix"
@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_fix"
         app:layout_constraintLeft_toLeftOf="@id/title_fix"
         android:text="@string/year_fix"
-        />
+    />
 
     <TextView
         android:id="@+id/duration_fix"
@@ -85,7 +85,7 @@
         android:text="@string/share"
         app:rippleColor="@color/white"
         app:icon="@drawable/ic_baseline_share_24"
-        />
+    />
 
 
 

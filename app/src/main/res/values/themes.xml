@@ -15,4 +15,13 @@
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:textColorHint">@color/black</item>
     </style>
+
+    <style name="Theme.MovieStarsApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MovieStarsApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MovieStarsApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
