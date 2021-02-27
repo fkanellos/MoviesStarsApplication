@@ -15,6 +15,10 @@ import com.bumptech.glide.Glide;
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.shared.json.MovieModel;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class PopularViewHolder extends RecyclerView.ViewHolder {
 
     public PopularViewHolder(@NonNull View itemView) {
@@ -50,5 +54,6 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
+
     }
 }

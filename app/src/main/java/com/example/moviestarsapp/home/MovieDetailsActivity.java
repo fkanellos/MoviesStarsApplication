@@ -25,9 +25,8 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        setContentView(R.layout.movie_details_activity);
         detailsViewModel= new ViewModelProvider(this).get(DetailsViewModel.class);
-
 
 
         Bundle parameter = getIntent().getExtras();
@@ -51,23 +50,23 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
                 title.setText(response.getTitle());
                 Log.d("blabla", "onSuccessResponse: "+ response.getTitle());
 
-//                TextView originaltitle =findViewById(R.id.original_title);
-//                originaltitle.setText(response.getOriginal_title());
-//
-//                TextView releaseDate = findViewById(R.id.release_date);
-//                releaseDate.setText(response.getRelease_date());
-//
-//                TextView runtime = findViewById(R.id.runtime);
-//                runtime.setText(String.valueOf(response.getRuntime()));
-//
-//                TextView status = findViewById(R.id.status);
-//                status.setText(response.getStatus());
-//
-//                TextView voteAverage = findViewById(R.id.vote_average);
-//                voteAverage.setText(String.valueOf(response.getVote_average()));
-//
-//                TextView overview = findViewById(R.id.overview);
-//                overview.setText(response.getOverview());
+                TextView originaltitle =findViewById(R.id.original_title);
+                originaltitle.setText(response.getOriginal_title());
+
+                TextView releaseDate = findViewById(R.id.release_date);
+                releaseDate.setText(response.getRelease_date());
+
+                TextView runtime = findViewById(R.id.runtime);
+                runtime.setText(String.valueOf(response.getRuntime()));
+
+                TextView status = findViewById(R.id.status);
+                status.setText(response.getStatus());
+
+                TextView voteAverage = findViewById(R.id.vote_average);
+                voteAverage.setText(String.valueOf(response.getVote_average()));
+
+                TextView overview = findViewById(R.id.overview);
+                overview.setText(response.getOverview());
 //
                 ImageView image = findViewById(R.id.imageView3);
                 Glide.with(image.getContext()).load(response.getPoster_path()).into(image);
