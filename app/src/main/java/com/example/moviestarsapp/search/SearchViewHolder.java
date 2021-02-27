@@ -20,6 +20,10 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
     }
     public void bind(MovieModel movieModel){
+
+
+
+
         TextView title=itemView.findViewById(R.id.movie_title);
         if (movieModel.getTitle()!=null) {
             title.setText("\"" + movieModel.getTitle() + "\"");

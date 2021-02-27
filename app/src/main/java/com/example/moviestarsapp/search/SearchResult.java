@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,7 @@ public class SearchResult extends AppCompatActivity {
 
     private SearchViewModel searchViewModel;
     private List<MovieModel> searchList = new ArrayList<>();
+    private SearchAdapter adapter = new SearchAdapter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,8 +47,11 @@ public class SearchResult extends AppCompatActivity {
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         String word = parameter.getString("Search");
         RecyclerView recyclerView = findViewById(R.id.search_result_recycleView);
-        SearchAdapter adapter = new SearchAdapter();
+
         recyclerView.setAdapter(adapter);
+
+        TextView searchTerm=findViewById(R.id.search_term);
+        searchTerm.setText("Search Results: "+word);
 
         searchViewModel.retrieveMovie(word,new RequestListener() {
             @Override
@@ -90,13 +95,33 @@ public class SearchResult extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
 
                 if (newText.length()>=3){
-                Intent intent=new Intent(SearchResult.this, SearchResult.class);
-                Bundle parameter= new Bundle();
-                parameter.putString("Search",newText);
-                intent.putExtras(parameter);
-                startActivity(intent);}
+                    TextView searchTerm=findViewById(R.id.search_term);
+                    searchTerm.setText("Search Results: "+newText);
 
-//                put here handle the search
+                    adapter.submitList(new ArrayList<>());
+
+
+                    searchViewModel.retrieveMovie(newText, new RequestListener() {
+                        @Override
+                        public void onSuccessResponse(JsonResponse response) {
+
+                            searchList = response.getResults();
+                            List<MovieModel> savedData = adapter.getCurrentList();
+                            List<MovieModel> newList = new ArrayList<>();
+                            newList.addAll(savedData);
+                            newList.addAll(searchList);
+                            adapter.submitList(newList);
+                        }
+
+                        @Override
+                        public void onErrorResponse(String msg) {
+
+                        }
+                    });
+
+
+                }
+
                 return false;
             }
         });
