@@ -59,24 +59,28 @@ public class SearchResult extends AppCompatActivity {
         TextView searchTerm=findViewById(R.id.search_term);
         searchTerm.setText("Search Results: "+ word);
 
-        searchViewModel.retrieveMovie(startPage, word,new RequestListener() {
-            @Override
-            public void onSuccessResponse(JsonResponse response) {
-                searchList = response.getResults();
+        try {
+            searchViewModel.retrieveMovie(startPage, word, new RequestListener() {
+                @Override
+                public void onSuccessResponse(JsonResponse response) {
+                    searchList = response.getResults();
 
-                List<MovieModel> savedData = adapter.getCurrentList();
-                List<MovieModel> newList = new ArrayList<>();
-                newList.addAll(savedData);
-                newList.addAll(searchList);
-                adapter.submitList(newList);
-            }
+                    List<MovieModel> savedData = adapter.getCurrentList();
+                    List<MovieModel> newList = new ArrayList<>();
+                    newList.addAll(savedData);
+                    newList.addAll(searchList);
+                    adapter.submitList(newList);
+                }
 
-            @Override
-            public void onErrorResponse(String msg) {
-                Snackbar.make(searchTerm, R.string.search_error, Snackbar.LENGTH_SHORT)
-                        .show();
-            }
-        });
+                @Override
+                public void onErrorResponse(String msg) {
+                    Snackbar.make(searchTerm, R.string.search_error, Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
     }
     @Override
@@ -105,32 +109,32 @@ public class SearchResult extends AppCompatActivity {
                     searchTerm.setText("Search Results: " + newText);
 
                     adapter.submitList(new ArrayList<>());
-                    String encodedNewText;
-                        try {
-                            encodedNewText = URLEncoder.encode(newText, "UTF-8");
-                            searchViewModel.retrieveMovie(startPage, encodedNewText, new RequestListener() {
-                            @Override
-                            public void onSuccessResponse(JsonResponse response) {
 
-                                searchList = response.getResults();
-                                List<MovieModel> savedData = adapter.getCurrentList();
-                                List<MovieModel> newList = new ArrayList<>();
-                                newList.addAll(savedData);
-                                newList.addAll(searchList);
-                                adapter.submitList(newList);
-                                Log.d("SearchResultGood", "onSuccessResponse: " + response.getResults().toString());
-                            }
+                    try {
+                        searchViewModel.retrieveMovie(startPage, newText, new RequestListener() {
+                        @Override
+                        public void onSuccessResponse(JsonResponse response) {
 
-                            @Override
-                            public void onErrorResponse(String msg) {
-                                Log.d("SearchResultBad", "onErrorResponse: " + msg);
-                            }
-                        });
-
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
+                            searchList = response.getResults();
+                            List<MovieModel> savedData = adapter.getCurrentList();
+                            List<MovieModel> newList = new ArrayList<>();
+                            newList.addAll(savedData);
+                            newList.addAll(searchList);
+                            adapter.submitList(newList);
+                            Log.d("SearchResultGood", "onSuccessResponse: " + response.getResults().toString());
                         }
+
+                        @Override
+                        public void onErrorResponse(String msg) {
+                            Log.d("SearchResultBad", "onErrorResponse: " + msg);
+                        }
+                    });
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
                     }
+
+
+                }
                 return false;
             }
         });

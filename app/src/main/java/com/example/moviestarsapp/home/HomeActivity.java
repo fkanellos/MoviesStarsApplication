@@ -106,10 +106,6 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtras(parameter);
                     startActivity(intent);
                 }
-//                else {
-//                    Snackbar.make(searchView, R.string.search_error, Snackbar.LENGTH_SHORT)
-//                            .show();
-//                }
                 return true;
             }
 

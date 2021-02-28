@@ -17,6 +17,9 @@ import com.example.moviestarsapp.shared.json.ConfigurationsResponse;
 import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.google.gson.Gson;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class SearchViewModel extends AndroidViewModel {
 
 //https://api.themoviedb.org/3/search/movie?api_key=9bb33d52c77a0f94a17eafe4c83b4988&language=en-US&query=woman&page=1&include_adult=false
@@ -62,7 +65,10 @@ public class SearchViewModel extends AndroidViewModel {
         queue.add(stringRequest);
     }
 
-    public void retrieveMovie(int page, String word,RequestListener requestListener) {
+    public void retrieveMovie(int page, String wordNoEncoding,RequestListener requestListener) throws UnsupportedEncodingException {
+
+        String word = URLEncoder.encode(wordNoEncoding, "UTF-8");
+
         String fullRequestUrl = startUrl + word + endUrl1 + page + endUrl2;
         Log.d("SearchViewModel", "Request: "+ fullRequestUrl);
 
@@ -77,7 +83,12 @@ public class SearchViewModel extends AndroidViewModel {
                         requestListener.onSuccessResponse(response);
 
 //                        if(page<2){retrieveMovie(page, word,requestListener);
-                        if(page<response.getTotal_pages()){retrieveMovie(page+1, word,requestListener);
+                        if(page<response.getTotal_pages()){
+                            try {
+                                retrieveMovie(page+1, word,requestListener);
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }, new Response.ErrorListener() {
