@@ -3,6 +3,7 @@ package com.example.moviestarsapp.search;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +43,7 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
 
 
         ImageView imageView = itemView.findViewById(R.id.movie_img);
+        Log.d("AAAAAAAA", "bind: " + movieModel.getPoster_path());
         Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_svgrepo_com).into(imageView);
 
         itemView.setOnClickListener(new View.OnClickListener() {

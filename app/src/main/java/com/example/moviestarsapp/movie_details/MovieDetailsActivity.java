@@ -59,37 +59,42 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
 
                 TextView title = findViewById(R.id.title);
                 TextView title2 = findViewById(R.id.txt_title);
-                title2.setText("Movie Title: ");
+                title2.setText("Title: ");
                 title.setText(response.getTitle());
                 Log.d("blabla", "onSuccessResponse: "+ response.getTitle());
 
                 TextView releaseDate = findViewById(R.id.release_date);
                 TextView releaseDate2 = findViewById(R.id.txt_release_date);
                 releaseDate2.setText("Release Date: ");
-                releaseDate.setText(response.getRelease_date());
+                if (response.getRelease_date()!=null){
+                releaseDate.setText(response.getRelease_date());}
 
                 TextView runtime = findViewById(R.id.runtime);
                 TextView runtime2 = findViewById(R.id.txt_runtime);
                 runtime2.setText("Runtime: ");
-                runtime.setText(String.valueOf(response.getRuntime()));
+                if (String.valueOf(response.getRuntime())!=null){
+                runtime.setText(String.valueOf(response.getRuntime()) + "min");}
 
                 TextView status = findViewById(R.id.status);
                 TextView status2 = findViewById(R.id.txt_status);
                 status2.setText("Status: ");
-                status.setText(response.getStatus());
+                if (response.getStatus()!=null){
+                status.setText(response.getStatus());}
 
                 TextView voteAverage = findViewById(R.id.vote_average);
                 TextView voteAverage2 = findViewById(R.id.txt_vote_average);
                 voteAverage2.setText("Vote Average: ");
-                voteAverage.setText(String.valueOf(response.getVote_average()));
+                if(response.getVote_average()!=0){
+                voteAverage.setText(String.valueOf(response.getVote_average()) + "/10");}
 
                 TextView overview = findViewById(R.id.overview);
                 TextView overview2 = findViewById(R.id.txt_overview);
-                overview2.setText("Movie Overview: ");
-                overview.setText(response.getOverview());
+                overview2.setText("Overview: ");
+                if (response.getOverview()!=null){
+                overview.setText(response.getOverview());}
 
                 ImageView image = findViewById(R.id.imageView3);
-                Glide.with(image.getContext()).load(response.getPoster_path()).into(image);
+                Glide.with(image.getContext()).load(response.getPoster_path()).error(R.drawable.ic_movie_svgrepo_com).into(image);
             }
 
             @Override
