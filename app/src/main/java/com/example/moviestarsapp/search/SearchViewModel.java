@@ -28,13 +28,13 @@ public class SearchViewModel extends AndroidViewModel {
     private final String APIKey = "9bb33d52c77a0f94a17eafe4c83b4988";
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
     private String prefixPosterURL;
-    int page;
+
+
     @NonNull
     private RequestQueue queue;
 
     public SearchViewModel(@NonNull Application application) {
         super(application);
-        page = 0;
         queue = Volley.newRequestQueue(application);
         retrieveConfiguration();
     }
@@ -62,25 +62,29 @@ public class SearchViewModel extends AndroidViewModel {
         queue.add(stringRequest);
     }
 
-    public void retrieveMovie(String word,RequestListener requestListener) {
-        page = page + 1;
+    public void retrieveMovie(int page, String word,RequestListener requestListener) {
+        String fullRequestUrl = startUrl + word + endUrl1 + page + endUrl2;
+        Log.d("SearchViewModel", "Request: "+ fullRequestUrl);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, startUrl+word+endUrl1+page+endUrl2,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, fullRequestUrl,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String msg) {
+
                         Gson gson = new Gson();
                         JsonResponse response = gson.fromJson(msg, JsonResponse.class);
                         response.setThePosterUrl(prefixPosterURL);
-
                         requestListener.onSuccessResponse(response);
-                        if(page<=response.getTotal_pages()){retrieveMovie(word,requestListener);}
+
+//                        if(page<2){retrieveMovie(page, word,requestListener);
+                        if(page<response.getTotal_pages()){retrieveMovie(page+1, word,requestListener);
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 requestListener.onErrorResponse(error.getMessage());
-        }
+            }
         });
 
         queue.add(stringRequest);

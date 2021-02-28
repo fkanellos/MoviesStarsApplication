@@ -81,10 +81,10 @@ public class PopularViewModel extends AndroidViewModel {
                         Gson gson = new Gson();
                         JsonResponse response = gson.fromJson(msg, JsonResponse.class);
                         response.setThePosterUrl(prefixPosterURL);
-                        Log.d("RECURSION", "onResponse: " + popularPageURL);
+//                        Log.d("RECURSION", "onResponse: " + popularPageURL);
                         requestListener.onSuccessResponse(response);
 
-                        if(page<=response.getTotal_pages()){retrievePopular(requestListener);}
+                        if(page<response.getTotal_pages()){retrievePopular(requestListener);}
                     }
                 }, new Response.ErrorListener() {
             @Override
