@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieStarsApp</string>
+    <string name="app_name">TheMovieBible</string>
     <string name="title_fix">Title :</string>
     <string name="title">Titanic</string>
     <string name="year_fix">Year :</string>
@@ -10,7 +10,7 @@
     <string name="duration">3h 50m</string>
     <string name="enter_your_password">Enter your password</string>
     <string name="enter_your_username">Enter your username</string>
-    <string name="moviebible">MovieBible</string>
+    <string name="moviebible">TheMovieBible</string>
     <string name="new_user">New User</string>
     <string name="email">e-mail</string>
     <string name="user">Username</string>

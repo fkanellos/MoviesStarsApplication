@@ -30,7 +30,7 @@
         android:text="@string/moviebible"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:layout_editor_absoluteX="16dp" />
 
