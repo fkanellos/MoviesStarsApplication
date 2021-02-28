@@ -53,10 +53,12 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
         editTextEmail = (EditText)findViewById(R.id.username_edit);
         editTextPassword = (EditText)findViewById(R.id.password_edit);
 
-        btnLogin =(Button)findViewById(R.id.sign_in);
+        btnLogin = (Button)findViewById(R.id.sign_in);
         btnLogin.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBar2);
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -108,6 +110,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
@@ -124,9 +127,8 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
-
     }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -149,11 +151,12 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
             editTextEmail.requestFocus();
             return;
         }
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             editTextEmail.setError("Please enter a valid email!!");
             editTextEmail.requestFocus();
             return;
         }
+
         if(password.isEmpty()){
             editTextPassword.setError("Password is required!!");
             editTextPassword.requestFocus();
@@ -169,23 +172,22 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
+//                    Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
+//                    startActivity(intent);
+
                 if(task.isSuccessful()){
+
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
                     if(user.isEmailVerified()){
-                        EditText userNameEdit = findViewById(R.id.username_edit);
-                        EditText passwdEdit = findViewById(R.id.password_edit);
-                        String userStr = userNameEdit.getText().toString();
-                        String passwdStr = passwdEdit.getText().toString();
+
                         Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
                         startActivity(intent);
                     }else {
                         user.sendEmailVerification();
                         Toast.makeText(CreateAccountActivity.this, "Check your email to verify your account", Toast.LENGTH_LONG).show();
                     }
-                    
-                    
-
-
                 }else{
                     Toast.makeText(CreateAccountActivity.this, "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
 
