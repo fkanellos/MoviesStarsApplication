@@ -2,6 +2,7 @@ package com.example.moviestarsapp.search;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +20,10 @@ import com.example.moviestarsapp.profile.UserProfileActivity;
 import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.shared.json.JsonResponse;
 import com.example.moviestarsapp.shared.json.MovieModel;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +32,9 @@ public class SearchResult extends AppCompatActivity {
     private SearchViewModel searchViewModel;
     private List<MovieModel> searchList = new ArrayList<>();
     private SearchAdapter adapter = new SearchAdapter();
+    Bundle parameter;
+    String word;
+    int startPage = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,41 +43,44 @@ public class SearchResult extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar_search));
 
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-
+        parameter = getIntent().getExtras();
+        word = parameter.getString("Search");
     }
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        Bundle parameter = getIntent().getExtras();
         SearchViewModel searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        String word = parameter.getString("Search");
         RecyclerView recyclerView = findViewById(R.id.search_result_recycleView);
 
         recyclerView.setAdapter(adapter);
 
         TextView searchTerm=findViewById(R.id.search_term);
-        searchTerm.setText("Search Results: "+word);
+        searchTerm.setText("Search Results: "+ word);
 
-        searchViewModel.retrieveMovie(word,new RequestListener() {
-            @Override
-            public void onSuccessResponse(JsonResponse response) {
-                searchList = response.getResults();
+        try {
+            searchViewModel.retrieveMovie(startPage, word, new RequestListener() {
+                @Override
+                public void onSuccessResponse(JsonResponse response) {
+                    searchList = response.getResults();
 
-                List<MovieModel> savedData = adapter.getCurrentList();
-                List<MovieModel> newList = new ArrayList<>();
-                newList.addAll(savedData);
-                newList.addAll(searchList);
-                adapter.submitList(newList);
+                    List<MovieModel> savedData = adapter.getCurrentList();
+                    List<MovieModel> newList = new ArrayList<>();
+                    newList.addAll(savedData);
+                    newList.addAll(searchList);
+                    adapter.submitList(newList);
+                }
 
-            }
-
-            @Override
-            public void onErrorResponse(String msg) {
-
-            }
-        });
+                @Override
+                public void onErrorResponse(String msg) {
+//                    Snackbar.make(searchTerm, R.string.search_error, Snackbar.LENGTH_SHORT)
+//                            .show();
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
     }
     @Override
@@ -94,14 +104,14 @@ public class SearchResult extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                if (newText.length()>=3){
-                    TextView searchTerm=findViewById(R.id.search_term);
-                    searchTerm.setText("Search Results: "+newText);
+                if (newText.length()>=3) {
+                    TextView searchTerm = findViewById(R.id.search_term);
+                    searchTerm.setText("Search Results: " + newText);
 
                     adapter.submitList(new ArrayList<>());
 
-
-                    searchViewModel.retrieveMovie(newText, new RequestListener() {
+                    try {
+                        searchViewModel.retrieveMovie(startPage, newText, new RequestListener() {
                         @Override
                         public void onSuccessResponse(JsonResponse response) {
 
@@ -111,17 +121,20 @@ public class SearchResult extends AppCompatActivity {
                             newList.addAll(savedData);
                             newList.addAll(searchList);
                             adapter.submitList(newList);
+                            Log.d("SearchResultGood", "onSuccessResponse: " + response.getResults().toString());
                         }
 
                         @Override
                         public void onErrorResponse(String msg) {
-
+                            Log.d("SearchResultBad", "onErrorResponse: " + msg);
                         }
                     });
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
 
 
                 }
-
                 return false;
             }
         });

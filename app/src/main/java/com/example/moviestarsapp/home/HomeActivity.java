@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.shared.RequestListener;
 import com.example.moviestarsapp.profile.UserProfileActivity;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,12 +99,13 @@ public class HomeActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Intent intent=new Intent(HomeActivity.this, SearchResult.class);
                 Bundle parameter= new Bundle();
-                parameter.putString("Search", query);
-                intent.putExtras(parameter);
-                startActivity(intent);
-
+                if (query!= null) {
+                    parameter.putString("Search", query);
+                    Intent intent = new Intent(HomeActivity.this, SearchResult.class);
+                    intent.putExtras(parameter);
+                    startActivity(intent);
+                }
                 return true;
             }
 
