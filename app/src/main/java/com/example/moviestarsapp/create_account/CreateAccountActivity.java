@@ -173,8 +173,6 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-//                    Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
-//                    startActivity(intent);
 
                 if(task.isSuccessful()){
 
@@ -194,28 +192,5 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
                 }
             }
         });
-
-
-
     }
-
-
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            EditText userNameEdit = findViewById(R.id.username_edit);
-//            EditText passwdEdit = findViewById(R.id.password_edit);
-//            String userStr = userNameEdit.getText().toString();
-//            String passwdStr = passwdEdit.getText().toString();
-//
-//            if (userStr.matches("") || passwdStr.matches("")) {
-//                Toast.makeText(CreateAccountActivity.this, "username or password empty", Toast.LENGTH_SHORT).show();
-//            } else {
-//                Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//            }
-//        }
-//    });
-
-
 }

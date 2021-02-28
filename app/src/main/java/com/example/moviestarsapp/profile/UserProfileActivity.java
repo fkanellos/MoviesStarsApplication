@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.create_account.CreateAccountActivity;
 import com.example.moviestarsapp.register.User;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +39,7 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__profile_);
+
         logout = (Button)findViewById(R.id.btn_signOut);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,11 +80,25 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        name = findViewById(R.id.txt_firstName);
-        email = findViewById(R.id.txt_email);
+        name = findViewById(R.id.Filippos);
+        email = findViewById(R.id.filippos_mail);
+
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if(signInAccount != null) {
+            name.setText(signInAccount.getDisplayName());
+            email.setText(signInAccount.getEmail());
+
+        }
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address
+            name.setText(user.getDisplayName());
+            email.setText(user.getEmail());
+        }
 
 
-    }
+
+        }
 
 
 
