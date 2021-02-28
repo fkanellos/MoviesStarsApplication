@@ -37,7 +37,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
             android:layout_marginBottom="32dp"
             app:icon="@drawable/ic_movie_clapper_svgrepo_com"
             android:paddingHorizontal="16dp"

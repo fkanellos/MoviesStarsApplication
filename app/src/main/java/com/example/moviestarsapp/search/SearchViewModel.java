@@ -32,7 +32,6 @@ public class SearchViewModel extends AndroidViewModel {
     private final String configURL = "https://api.themoviedb.org/3/configuration?api_key=" + APIKey;
     private String prefixPosterURL;
 
-
     @NonNull
     private RequestQueue queue;
 
@@ -53,22 +52,29 @@ public class SearchViewModel extends AndroidViewModel {
                         String baseURL = configurationsResponse.getImages().getBase_url();
                         String sizeURL = configurationsResponse.getImages().getPoster_sizes()[3];
                         prefixPosterURL = baseURL + sizeURL;
-                        Log.d("GOOD prefixPosterURL", prefixPosterURL);
+                        Log.d("Good Configurations", prefixPosterURL);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("ViewModel", error.getMessage(), error);
+                Log.d("No configurations", error.getMessage(), error);
             }
         });
 
         queue.add(stringRequest);
     }
 
-    public void retrieveMovie(int page, String wordNoEncoding,RequestListener requestListener) throws UnsupportedEncodingException {
+    public void retrieveMovie(int page, String wordNoEncoding, RequestListener requestListener) throws UnsupportedEncodingException {
+
+        queue.cancelAll(new RequestQueue.RequestFilter(){
+            @Override
+            public boolean apply(Request<?> request) {
+                return true;
+            }
+        });
+
 
         String word = URLEncoder.encode(wordNoEncoding, "UTF-8");
-
         String fullRequestUrl = startUrl + word + endUrl1 + page + endUrl2;
         Log.d("SearchViewModel", "Request: "+ fullRequestUrl);
 
@@ -84,7 +90,7 @@ public class SearchViewModel extends AndroidViewModel {
 
                         if(page<response.getTotal_pages()){
                             try {
-                                retrieveMovie(page+1, word,requestListener);
+                                retrieveMovie(page+1, word, requestListener);
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
                             }
