@@ -82,7 +82,6 @@ public class SearchViewModel extends AndroidViewModel {
                         response.setThePosterUrl(prefixPosterURL);
                         requestListener.onSuccessResponse(response);
 
-//                        if(page<2){retrieveMovie(page, word,requestListener);
                         if(page<response.getTotal_pages()){
                             try {
                                 retrieveMovie(page+1, word,requestListener);

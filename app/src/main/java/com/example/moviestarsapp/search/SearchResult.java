@@ -74,8 +74,8 @@ public class SearchResult extends AppCompatActivity {
 
                 @Override
                 public void onErrorResponse(String msg) {
-                    Snackbar.make(searchTerm, R.string.search_error, Snackbar.LENGTH_SHORT)
-                            .show();
+//                    Snackbar.make(searchTerm, R.string.search_error, Snackbar.LENGTH_SHORT)
+//                            .show();
                 }
             });
         } catch (UnsupportedEncodingException e) {
