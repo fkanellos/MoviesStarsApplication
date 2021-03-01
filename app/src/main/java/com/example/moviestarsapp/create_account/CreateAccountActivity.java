@@ -119,6 +119,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
 
                         } else {
                             Toast.makeText(CreateAccountActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -190,6 +191,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
                     }
                 }else{
                     Toast.makeText(CreateAccountActivity.this, "Failed to login! Please check your credentials!", Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
 
                 }
             }
