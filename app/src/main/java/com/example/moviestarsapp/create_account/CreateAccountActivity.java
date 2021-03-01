@@ -104,6 +104,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -112,6 +113,7 @@ public class CreateAccountActivity<DEFAULT_SIGN_IN> extends AppCompatActivity im
                             // Sign in success
 
                             FirebaseUser user = mAuth.getCurrentUser();
+                            progressBar.setVisibility(View.VISIBLE);
                             Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                             startActivity(intent);
 

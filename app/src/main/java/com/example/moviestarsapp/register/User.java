@@ -3,6 +3,7 @@ package com.example.moviestarsapp.register;
 public class User {
     public String fullname, email, age;
 
+
     public User(){
 
     }
