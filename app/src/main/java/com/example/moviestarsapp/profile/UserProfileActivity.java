@@ -33,6 +33,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private String userId;
 
     TextView name, email;
+
     private Button logout;
 
     @Override
@@ -40,7 +41,7 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__profile_);
 
-        logout = (Button)findViewById(R.id.btn_signOut);
+        logout = (Button) findViewById(R.id.btn_signOut);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,16 +54,18 @@ public class UserProfileActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         userId = user.getUid();
 
-        final TextView fullNameTextview = (TextView)findViewById(R.id.Filippos);
-        final TextView emaiTextview = (TextView)findViewById(R.id.txt_email);
+
+        final TextView fullNameTextview = (TextView) findViewById(R.id.Filippos);
+        final TextView emaiTextview = (TextView) findViewById(R.id.txt_email);
 
         reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userProfile = snapshot.getValue(User.class);
-                if(userProfile != null){
+                if (userProfile != null) {
                     String fullname = userProfile.fullname;
                     String email = userProfile.email;
+
 
                     fullNameTextview.setText(fullname);
                     emaiTextview.setText(email);
@@ -83,10 +86,12 @@ public class UserProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.Filippos);
         email = findViewById(R.id.filippos_mail);
 
+
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-        if(signInAccount != null) {
+        if (signInAccount != null) {
             name.setText(signInAccount.getDisplayName());
             email.setText(signInAccount.getEmail());
+
 
         }
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -94,13 +99,8 @@ public class UserProfileActivity extends AppCompatActivity {
             // Name, email address
             name.setText(user.getDisplayName());
             email.setText(user.getEmail());
-        }
-
-
 
         }
 
-
-
-
+    }
 }
