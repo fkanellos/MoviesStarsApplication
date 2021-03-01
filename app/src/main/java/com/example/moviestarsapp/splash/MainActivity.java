@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moviestarsapp.BuildConfig;
+import com.example.moviestarsapp.LoginActivity;
 import com.example.moviestarsapp.R;
 import com.example.moviestarsapp.create_account.CreateAccountActivity;
 import com.example.moviestarsapp.home.HomeActivity;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
