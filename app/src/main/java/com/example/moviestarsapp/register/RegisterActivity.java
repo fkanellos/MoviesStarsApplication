@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.moviestarsapp.R;
-import com.example.moviestarsapp.create_account.CreateAccountActivity;
+import com.example.moviestarsapp.home.HomeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -119,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                    if(task.isSuccessful()){
                                        Toast.makeText(RegisterActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                                        progressbar.setVisibility(View.VISIBLE);
-                                       Intent intent = new Intent(getApplicationContext(), CreateAccountActivity.class);
+                                       Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                                        startActivity(intent);
 
                                    }else{
@@ -130,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                            });
 
                        }else{
-                           Toast.makeText(RegisterActivity.this, "Failed to register! Try again", Toast.LENGTH_LONG).show();
+                           Toast.makeText(RegisterActivity.this, "Failed to register! This user is already registered! Try again", Toast.LENGTH_LONG).show();
                            progressbar.setVisibility(View.GONE);
 
                     }
