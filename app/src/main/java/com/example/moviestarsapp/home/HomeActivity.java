@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     private PopularViewModel viewModel;
     private List<MovieModel> movieList = new ArrayList<MovieModel>();
     private List<MovieModel> responseMovieList;
+    private int startPage=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+
         super.onPostCreate(savedInstanceState);
 
         PopularAdapter popularAdapter = new PopularAdapter();
@@ -54,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
 
         MaterialButton randomBtn = findViewById(R.id.random_button);
 
-        viewModel.retrievePopular(new RequestListener() {
+        viewModel.retrievePopular(startPage, new RequestListener() {
             @Override
             public void onSuccessResponse(JsonResponse response) {
 

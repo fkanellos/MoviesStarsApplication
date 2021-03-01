@@ -73,7 +73,7 @@ public class MovieDetailsActivity<parameter> extends AppCompatActivity {
                 TextView runtime2 = findViewById(R.id.txt_runtime);
                 runtime2.setText("Runtime: ");
                 if (String.valueOf(response.getRuntime())!=null){
-                runtime.setText(String.valueOf(response.getRuntime()) + "min");}
+                runtime.setText(String.valueOf(response.getRuntime()) + " min");}
 
                 TextView status = findViewById(R.id.status);
                 TextView status2 = findViewById(R.id.txt_status);

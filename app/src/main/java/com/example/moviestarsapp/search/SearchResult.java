@@ -32,9 +32,9 @@ public class SearchResult extends AppCompatActivity {
     private SearchViewModel searchViewModel;
     private List<MovieModel> searchList = new ArrayList<>();
     private SearchAdapter adapter = new SearchAdapter();
-    Bundle parameter;
-    String word;
-    int startPage = 1;
+    private Bundle parameter;
+    private String word;
+    private final int startPage = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
