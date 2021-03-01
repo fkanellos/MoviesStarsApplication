@@ -56,7 +56,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
         final TextView fullNameTextview = (TextView) findViewById(R.id.Filippos);
-        final TextView emaiTextview = (TextView) findViewById(R.id.txt_email);
+        final TextView emaiTextview = (TextView) findViewById(R.id.filippos_mail);
 
         reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
