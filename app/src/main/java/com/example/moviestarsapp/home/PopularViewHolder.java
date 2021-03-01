@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
         TextView title = itemView.findViewById(R.id.title);
         if (movieModel.getTitle()!=null) {
             title.setText("\"" + movieModel.getTitle() + "\"");
+            Log.d("VIEWHOLDER", "bind: " + movieModel.getTitle());
         }
 
         TextView year = itemView.findViewById(R.id.year);
