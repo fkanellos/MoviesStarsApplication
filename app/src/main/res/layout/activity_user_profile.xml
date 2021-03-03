@@ -27,18 +27,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView"
-        app:layout_constraintBottom_toTopOf="@id/txt_firstName"
+        app:layout_constraintBottom_toTopOf="@id/username_top"
         android:layout_marginTop="32dp"
         android:src="@drawable/ic_baseline_account_circle_24"
         />
 
     <TextView
-        android:id="@+id/txt_firstName"
+        android:id="@+id/username_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/img"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/Filippos"
+        app:layout_constraintBottom_toTopOf="@id/username_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp"
         android:text="Username : "
@@ -47,22 +47,22 @@
         />
 
     <TextView
-        android:id="@+id/Filippos"
+        android:id="@+id/username_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toBottomOf="@id/txt_firstName"
+        app:layout_constraintTop_toBottomOf="@id/username_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="@dimen/mpamps"
-        android:text="Filippos Kanellos"
+        tools:text="Filippos Kanellos"
         />
 
     <TextView
-        android:id="@+id/txt_email"
+        android:id="@+id/email_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txt_firstName"
+        app:layout_constraintTop_toBottomOf="@id/username_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"
@@ -72,13 +72,13 @@
         />
 
     <TextView
-        android:id="@+id/filippos_mail"
+        android:id="@+id/email_bottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email"
-        android:text="filippos.kanellos@gmail.com"
+        app:layout_constraintTop_toBottomOf="@+id/email_top"
+        tools:text="filippos.kanellos@gmail.com"
         android:textSize="@dimen/mpamps"
         />
 
@@ -92,7 +92,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filippos_mail"
+        app:layout_constraintTop_toBottomOf="@id/email_bottom"
         android:textSize="@dimen/mpamps"
         android:paddingHorizontal="16dp"
         android:paddingVertical="8dp"

@@ -1,4 +1,4 @@
-package com.example.moviestarsapp.register;
+package com.example.moviestarsapp.profile;
 
 public class User {
     public String fullname, email, age;
