@@ -86,13 +86,13 @@ public class UserProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.email_bottom);
 
 
-//        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
-//        if (signInAccount != null) {
-//            name.setText(signInAccount.getDisplayName());
-//            email.setText(signInAccount.getEmail());
-//
-//
-//        }
+        GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
+        if (signInAccount != null) {
+            name.setText(signInAccount.getDisplayName());
+            email.setText(signInAccount.getEmail());
+
+
+        }
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // Name, email address

@@ -54,7 +54,7 @@ public class SearchViewModel extends AndroidViewModel {
                         ConfigurationsResponse configurationsResponse = gson.fromJson(response, ConfigurationsResponse.class);
 
                         String baseURL = configurationsResponse.getImages().getBase_url();
-                        String sizeURL = configurationsResponse.getImages().getPoster_sizes()[3];
+                        String sizeURL = configurationsResponse.getImages().getPoster_sizes()[4];
                         prefixPosterURL = baseURL + sizeURL;
                         configListener.onSuccessResponse(prefixPosterURL);
                         Log.d("Good Configurations", prefixPosterURL);

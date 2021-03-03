@@ -35,11 +35,11 @@ public class PopularViewHolder extends RecyclerView.ViewHolder {
             Log.d("VIEWHOLDER", "bind: " + movieModel.getTitle());
         }
 
-        TextView year = itemView.findViewById(R.id.year);
-        if (movieModel.getRelease_date()!=null) {
-            String releaseYear = movieModel.getRelease_date().split("-")[0];
-            year.setText("(" + releaseYear + ")");
-        }
+//        TextView year = itemView.findViewById(R.id.year);
+//        if (movieModel.getRelease_date()!=null) {
+//            String releaseYear = movieModel.getRelease_date();
+////            year.setText("(" + releaseYear + ")");
+//        }
 
         ImageView imageView = itemView.findViewById(R.id.img);
         Glide.with(itemView.getContext()).load(movieModel.getPoster_path()).error(R.drawable.ic_movie_svgrepo_com).into(imageView);

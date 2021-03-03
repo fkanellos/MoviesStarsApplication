@@ -30,7 +30,7 @@
         android:id="@+id/title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/year"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="@string/title"
         app:layout_constraintStart_toStartOf="@id/img"
         app:layout_constraintEnd_toEndOf="@id/img"
@@ -39,17 +39,17 @@
         android:background="@color/dark_shadow"
         />
 
-    <TextView
-        android:id="@+id/year"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/img"
-        app:layout_constraintEnd_toEndOf="@id/img"
-        app:layout_constraintBottom_toBottomOf="@id/img"
-        tools:text="@string/year"
-        android:textColor="@color/white"
-        android:background="@color/dark_shadow"
-        android:gravity="center_horizontal"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/year"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="@id/img"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/img"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/img"-->
+<!--        tools:text="@string/year"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@color/dark_shadow"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

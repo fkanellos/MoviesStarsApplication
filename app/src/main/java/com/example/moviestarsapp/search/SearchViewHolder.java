@@ -30,11 +30,11 @@ public class SearchViewHolder extends RecyclerView.ViewHolder {
             title.setText("\"" + movieModel.getTitle() + "\"");
         }
 
-        TextView year = itemView.findViewById(R.id.movie_year);
-        if (movieModel.getRelease_date()!=null) {
-            String releaseYear = movieModel.getRelease_date().split("-")[0];
-            year.setText("(" + releaseYear + ")");
-        }
+//        TextView year = itemView.findViewById(R.id.movie_year);
+//        if (movieModel.getRelease_date()!=null) {
+//            String releaseYear = movieModel.getRelease_date().split("-")[0];
+//            year.setText("(" + releaseYear + ")");
+//        }
 
         TextView overviewSearch=itemView.findViewById(R.id.overview_search);
         if (movieModel.getOverview()!=null) {
