@@ -21,10 +21,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextInputLayout inputEmail, inputUsername, inputAge, inputPassword;
+    private TextInputLayout inputEmail, inputUsername, inputPassword;
     private Button btnSubmit;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
@@ -40,7 +42,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnSubmit = (Button) findViewById(R.id.btn_submit);
         inputEmail = (TextInputLayout) findViewById(R.id.email);
         inputUsername = (TextInputLayout) findViewById(R.id.username);
-        inputAge = (TextInputLayout) findViewById(R.id.age);
         inputPassword = (TextInputLayout) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_submit);
 
@@ -51,7 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String email = inputEmail.getEditText().getText().toString().trim();
                 String username = inputUsername.getEditText().getText().toString().trim();
-//                String age = inputAge.getEditText().getText().toString().trim();
                 String password = inputPassword.getEditText().getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
@@ -75,15 +75,24 @@ public class RegisterActivity extends AppCompatActivity {
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+
                                 Toast.makeText(RegisterActivity.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
+
                                 if (!task.isSuccessful()) {
+
                                     Toast.makeText(RegisterActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(username).build();
+
+                                    user.updateProfile(profileUpdates);
                                     startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                     finish();
                                 }
