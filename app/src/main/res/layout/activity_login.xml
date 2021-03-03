@@ -82,15 +82,15 @@
         android:layout_marginTop="4dp"
         />
 
-    <TextView
-        android:id="@+id/btn_reset_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/btn_login"
-        app:layout_constraintLeft_toLeftOf="@id/btn_login"
-        android:text="@string/btn_forgot_password"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/btn_reset_password"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/btn_login"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/btn_login"-->
+<!--        android:text="@string/btn_forgot_password"-->
+<!--        />-->
 
     <TextView
         android:id="@+id/btn_register"
